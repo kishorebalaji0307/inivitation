@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+:root {
+  --color-ivory-cream: #FFF8EC;
+  --color-terracotta: #A83F25;
+  --color-antique-gold: #D6A84F;
+  --color-leaf-green: #247B49;
+  --color-dark-maroon: #702B24;
+  --color-warm-white: #FFFCF5;
+  --font-serif-royal: 'Cinzel', 'Marcellus', 'Cormorant Garamond', Georgia, serif;
+  --font-serif-elegant: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-script: 'Great Vibes', cursive;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-ivory-cream);
+  color: #45180D;
+  font-family: var(--font-serif-elegant);
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar in Antique Gold & Terracotta */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFF8EC;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D6A84F;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A83F25;
+}
+
+/* Subtle floating animation keyframes */
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(2deg);
+  }
+}
+
+.animate-float-gentle {
+  animation: floatGentle 6s ease-in-out infinite;
+}
+
+/* Subtle pulse keyframe */
+@keyframes gentleGlow {
+  0%, 100% {
+    opacity: 0.85;
+    filter: drop-shadow(0 0 10px rgba(214, 168, 79, 0.3));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 22px rgba(214, 168, 79, 0.6));
+  }
+}
+
+.animate-gentle-glow {
+  animation: gentleGlow 4s ease-in-out infinite;
+}
+
+/* Realistic 3D Indian Wedding Petal Falling Animation */
+@keyframes petalFall {
+  0% {
+    transform: translateY(-40px) translateX(0) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.95;
+  }
+  30% {
+    transform: translateY(30vh) translateX(25px) rotateX(75deg) rotateY(180deg) rotateZ(60deg);
+  }
+  60% {
+    transform: translateY(65vh) translateX(-25px) rotateX(150deg) rotateY(270deg) rotateZ(140deg);
+  }
+  90% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(115vh) translateX(15px) rotateX(240deg) rotateY(360deg) rotateZ(220deg);
+    opacity: 0;
+  }
+}
+
+.animate-petal-fall {
+  animation-name: petalFall;
+}
