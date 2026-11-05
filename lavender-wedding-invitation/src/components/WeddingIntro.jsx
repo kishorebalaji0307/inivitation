@@ -1,36 +1,36 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, Heart } from 'lucide-react';
 import { weddingData } from '../data/weddingData';
 
 /**
- * Realistic South Indian Wedding Floating Petals (Rose, Jasmine, Marigold, Soft Pink)
+ * Realistic Lavender Wedding Floating Petals (Lavender, Jasmine, Violet, Soft Pink)
  * Multi-depth particles entering from top and sides with natural breeze and rotations.
  */
 function FloatingPetalOverlay({ active, isOpening }) {
   const petals = useRef(
-    Array.from({ length: 42 }, (_, i) => {
-      const type = i % 4; // 0: Crimson rose, 1: Golden marigold, 2: Jasmine blossom, 3: Soft pink rose
+    Array.from({ length: 40 }, (_, i) => {
+      const type = i % 4; // 0: Royal Lavender, 1: Golden Shimmer, 2: Jasmine White, 3: Soft Violet
       return {
         id: i,
         type,
         color:
           type === 0
-            ? '#BE123C'
+            ? '#B794D6'
             : type === 1
-            ? '#F59E0B'
+            ? '#C5A059'
             : type === 2
-            ? '#FFFBEB'
-            : '#FB7185',
+            ? '#FFFDF9'
+            : '#8E68A8',
         accentColor:
           type === 0
-            ? '#881337'
+            ? '#7C5295'
             : type === 1
-            ? '#D97706'
+            ? '#E5C97F'
             : type === 2
-            ? '#FEF3C7'
-            : '#F43F5E',
+            ? '#F3EAF9'
+            : '#572D75',
         left: Math.random() * 100,
         delay: Math.random() * 4,
         duration: (isOpening ? 4.5 : 6.5) + Math.random() * 4.5,
@@ -69,149 +69,116 @@ function FloatingPetalOverlay({ active, isOpening }) {
             /* Jasmine Blossom 4-petal Star */
             <svg viewBox="0 0 32 32" className="w-full h-full drop-shadow-md">
               <path
-                d="M16 2 C16 9 12 14 2 16 C12 16 16 21 16 30 C16 21 20 16 30 16 C20 14 16 9 16 2 Z"
-                fill={p.color}
-                stroke="#FDE68A"
-                strokeWidth="1.2"
+                d="M16 2 C17 9 23 15 30 16 C23 17 17 23 16 30 C15 23 9 17 2 16 C9 15 15 9 16 2 Z"
+                fill="#FFFDF9"
               />
-              <circle cx="16" cy="16" r="3.2" fill="#F59E0B" />
+              <circle cx="16" cy="16" r="3" fill="#C5A059" />
             </svg>
           ) : (
-            /* Curved Rose / Marigold Petal with natural vein */
+            /* Curled Silk Petal */
             <svg viewBox="0 0 28 36" className="w-full h-full drop-shadow-md">
+              <defs>
+                <linearGradient id={`petalGrad-${p.id}`} x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stopColor={p.color} />
+                  <stop offset="70%" stopColor={p.color} />
+                  <stop offset="100%" stopColor={p.accentColor} />
+                </linearGradient>
+              </defs>
               <path
-                d="M14 2 C22 2 27 10 26 22 C25 32 18 35 14 35 C10 35 3 32 2 22 C1 10 6 2 14 2 Z"
-                fill={`url(#curtain-petal-grad-${p.id % 4})`}
+                d="M14 0 C22 0 28 8 28 18 C28 28 20 36 14 36 C8 36 0 28 0 18 C0 8 6 0 14 0 Z"
+                fill={`url(#petalGrad-${p.id})`}
+                opacity="0.9"
               />
               <path
-                d="M14 6 C15 16 15 24 14 32"
+                d="M14 4 C18 12 18 24 14 32"
                 stroke={p.accentColor}
                 strokeWidth="0.8"
-                opacity="0.45"
+                opacity="0.4"
                 fill="none"
               />
             </svg>
           )}
         </div>
       ))}
-
-      {/* SVG Gradients for Petals */}
-      <svg className="absolute w-0 h-0" aria-hidden="true">
-        <defs>
-          <linearGradient id="curtain-petal-grad-0" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#E11D48" />
-            <stop offset="50%" stopColor="#BE123C" />
-            <stop offset="100%" stopColor="#881337" />
-          </linearGradient>
-          <linearGradient id="curtain-petal-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#FBBF24" />
-            <stop offset="60%" stopColor="#F59E0B" />
-            <stop offset="100%" stopColor="#D97706" />
-          </linearGradient>
-          <linearGradient id="curtain-petal-grad-2" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#FFFFFF" />
-            <stop offset="80%" stopColor="#FFFBEB" />
-            <stop offset="100%" stopColor="#FEF3C7" />
-          </linearGradient>
-          <linearGradient id="curtain-petal-grad-3" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#FDA4AF" />
-            <stop offset="60%" stopColor="#FB7185" />
-            <stop offset="100%" stopColor="#E11D48" />
-          </linearGradient>
-        </defs>
-      </svg>
     </div>
   );
 }
 
 /**
- * Traditional Brass Kuthuvilakku Lamp with Animated Oil Flame
+ * Traditional Brass Kuthuvilakku Lamp with Lavender Base & Warm Oil Flame
  */
 function KuthuvilakkuLamp({ side = 'left' }) {
   return (
     <div
       className={`absolute bottom-4 sm:bottom-6 ${
         side === 'left' ? 'left-3 sm:left-8' : 'right-3 sm:right-8'
-      } z-30 pointer-events-none flex flex-col items-center drop-shadow-[0_0_26px_rgba(245,158,11,0.7)]`}
+      } z-30 pointer-events-none flex flex-col items-center drop-shadow-[0_0_26px_rgba(214,168,79,0.7)]`}
     >
       {/* Glowing Warm Flame with Pulsing Core */}
       <div className="relative flex flex-col items-center">
-        <div className="w-3.5 sm:w-4 h-6 sm:h-7 rounded-full bg-gradient-to-t from-[#EA580C] via-[#FBBF24] to-[#FFFBEB] shadow-[0_0_20px_#F59E0B] animate-pulse" />
+        <div className="w-3.5 sm:w-4 h-6 sm:h-7 rounded-full bg-gradient-to-t from-[#C5A059] via-[#FBBF24] to-[#FFFBEB] shadow-[0_0_20px_#C5A059] animate-pulse" />
         <div className="absolute top-1 w-1.5 h-3 rounded-full bg-white blur-[1px]" />
       </div>
 
       {/* Brass Lamp Oil Reservoir Dish */}
-      <div className="w-11 sm:w-14 h-4 rounded-b-full bg-gradient-to-b from-[#E5B85C] via-[#B8860B] to-[#5C3D06] border-t border-[#FFFBEB] shadow-md -mt-1" />
+      <div className="w-11 sm:w-14 h-4 rounded-b-full bg-gradient-to-b from-[#E5C97F] via-[#C5A059] to-[#7C5295] border-t border-[#FFFBEB] shadow-md -mt-1" />
 
       {/* Ornate Fluted Brass Pillar */}
-      <div className="w-3 sm:w-3.5 h-20 sm:h-28 bg-gradient-to-r from-[#8C600B] via-[#E5B85C] to-[#5C3D06] shadow-inner" />
+      <div className="w-3 sm:w-3.5 h-20 sm:h-28 bg-gradient-to-r from-[#8C600B] via-[#E5C97F] to-[#5C3D06] shadow-inner" />
 
       {/* Tiered Decorative Base */}
-      <div className="w-7 sm:w-8 h-2 rounded-t-sm bg-gradient-to-t from-[#B8860B] to-[#E5B85C]" />
-      <div className="w-14 sm:w-16 h-4.5 rounded-t-lg bg-gradient-to-t from-[#5C3D06] via-[#B8860B] to-[#E5B85C] shadow-2xl" />
+      <div className="w-7 sm:w-8 h-2 rounded-t-sm bg-gradient-to-t from-[#C5A059] to-[#E5C97F]" />
+      <div className="w-14 sm:w-16 h-4.5 rounded-t-lg bg-gradient-to-t from-[#572D75] via-[#C5A059] to-[#E5C97F] shadow-2xl" />
 
       {/* Warm Floor Light Glow Reflection */}
-      <div className="w-24 h-6 rounded-full bg-[#F59E0B]/25 blur-md -mt-2" />
+      <div className="w-24 h-6 rounded-full bg-[#C5A059]/20 blur-md -mt-2" />
     </div>
   );
 }
 
 /**
- * Hanging Marigold and Jasmine Garlands flanking the sides
+ * Hanging Lavender and Jasmine Garlands flanking the sides
  */
 function SideGarlandStrand({ side = 'left' }) {
   const flowers = [
-    { type: 'marigold', color: '#EA580C' },
-    { type: 'jasmine', color: '#FFFBEB' },
-    { type: 'marigold', color: '#F59E0B' },
-    { type: 'jasmine', color: '#FFFBEB' },
-    { type: 'marigold', color: '#EA580C' },
-    { type: 'jasmine', color: '#FFFBEB' },
-    { type: 'marigold', color: '#F59E0B' },
-    { type: 'jasmine', color: '#FFFBEB' },
-    { type: 'marigold', color: '#EA580C' },
-    { type: 'jasmine', color: '#FFFBEB' },
-    { type: 'marigold', color: '#F59E0B' },
+    { type: 'lavender', color: '#9B6DC0' },
+    { type: 'jasmine', color: '#FFFDF9' },
+    { type: 'violet', color: '#7C5295' },
+    { type: 'jasmine', color: '#FFFDF9' },
+    { type: 'lavender', color: '#B794D6' },
+    { type: 'jasmine', color: '#FFFDF9' },
+    { type: 'violet', color: '#68398A' },
+    { type: 'gold', color: '#C5A059' },
+    { type: 'jasmine', color: '#FFFDF9' },
+    { type: 'lavender', color: '#9B6DC0' },
+    { type: 'jasmine', color: '#FFFDF9' },
   ];
 
   return (
     <div
       className={`absolute top-0 ${
-        side === 'left' ? 'left-1 sm:left-4' : 'right-1 sm:right-4'
-      } z-30 pointer-events-none flex flex-col items-center drop-shadow-md`}
+        side === 'left' ? 'left-2 sm:left-7' : 'right-2 sm:right-7'
+      } z-30 pointer-events-none flex flex-col items-center drop-shadow-md select-none`}
     >
-      {/* Top Golden Brass Bell Hanging */}
-      <div className="w-0.5 h-6 sm:h-10 bg-gradient-to-b from-[#A83F25] to-[#D6A84F]" />
-      <div className="w-4 h-4 rounded-full bg-gradient-to-b from-[#E5B85C] to-[#8C600B] shadow-sm mb-1" />
-
-      {/* Flower Garland Drops */}
+      <div className="w-[1.5px] h-4 bg-gradient-to-b from-[#C5A059] to-[#7C5295]" />
       {flowers.map((f, i) => (
-        <div key={i} className="my-0.5 flex flex-col items-center">
-          {f.type === 'marigold' ? (
-            <div
-              className="w-4 sm:w-5 h-4 sm:h-5 rounded-full shadow-md"
-              style={{
-                backgroundColor: f.color,
-                boxShadow: '0 2px 5px rgba(0,0,0,0.25)',
-              }}
-            />
-          ) : (
-            <div
-              className="w-3.5 sm:w-4 h-3 sm:h-4 rounded-full shadow-sm"
-              style={{
-                backgroundColor: f.color,
-                border: '1px solid #FDE68A',
-              }}
-            />
-          )}
+        <div key={i} className="flex flex-col items-center -my-0.5">
+          <div
+            className="w-3.5 sm:w-4.5 h-3.5 sm:h-4.5 rounded-full shadow-sm flex items-center justify-center"
+            style={{ backgroundColor: f.color }}
+          >
+            <div className="w-1.5 h-1.5 rounded-full bg-white/70" />
+          </div>
+          <div className="w-0.5 h-1 bg-[#C5A059]/60" />
         </div>
       ))}
+      <div className="w-4 h-6 bg-gradient-to-b from-[#C5A059] to-[#7C5295] rounded-b-full shadow-sm mt-0.5" />
     </div>
   );
 }
 
 /**
- * Main South Indian Silk Curtain Opening Intro
+ * Main South Indian Royal Lavender Silk Curtain Opening Intro
  */
 export default function WeddingIntro({ onOpenStart, onOpenComplete }) {
   const containerRef = useRef(null);
@@ -222,15 +189,19 @@ export default function WeddingIntro({ onOpenStart, onOpenComplete }) {
   const lightShaftRef = useRef(null);
   const cardRef = useRef(null);
   const timelineRef = useRef(null);
+  const hasTriggeredRef = useRef(false);
 
   const [isOpening, setIsOpening] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
-  const [showPetals, setShowPetals] = useState(true);
+  const [showPetals] = useState(true);
 
-  const { couple, event, messages } = weddingData;
+  const { couple, events } = weddingData;
+  const marriage = events?.marriage;
+  const reception = events?.reception;
 
   const handleOpenCurtains = () => {
-    if (isOpening || isFinished) return;
+    if (isOpening || isFinished || hasTriggeredRef.current) return;
+    hasTriggeredRef.current = true;
     setIsOpening(true);
 
     // Start background music immediately upon user gesture
@@ -250,7 +221,7 @@ export default function WeddingIntro({ onOpenStart, onOpenComplete }) {
         cardRef.current,
         {
           opacity: 0,
-          scale: 1.06,
+          scale: 1.05,
           y: -15,
           duration: 0.65,
           ease: 'power2.in',
@@ -264,7 +235,7 @@ export default function WeddingIntro({ onOpenStart, onOpenComplete }) {
       tl.to(
         lightShaftRef.current,
         {
-          opacity: 0.9,
+          opacity: 0.95,
           scaleX: 3.5,
           duration: 1.8,
           ease: 'power2.out',
@@ -359,7 +330,7 @@ export default function WeddingIntro({ onOpenStart, onOpenComplete }) {
   return (
     <div
       ref={containerRef}
-      className={`fixed inset-0 z-50 overflow-hidden select-none bg-[#1A0604] transition-all ${
+      className={`fixed inset-0 z-50 overflow-hidden select-none bg-[#1F0E2C] transition-all ${
         isFinished ? 'pointer-events-none' : ''
       }`}
       style={{ touchAction: 'manipulation' }}
@@ -367,23 +338,32 @@ export default function WeddingIntro({ onOpenStart, onOpenComplete }) {
       {/* 1. Golden Backlight behind the curtains (burgeons as curtains part) */}
       <div
         ref={lightShaftRef}
-        className="absolute inset-0 z-0 pointer-events-none opacity-0 bg-[radial-gradient(ellipse_at_center,rgba(255,245,215,0.95)_0%,rgba(245,158,11,0.65)_40%,rgba(168,63,37,0.3)_75%,transparent_100%)] origin-center"
+        className="absolute inset-0 z-0 pointer-events-none opacity-0 bg-[radial-gradient(ellipse_at_center,rgba(255,248,230,0.98)_0%,rgba(229,201,127,0.7)_35%,rgba(124,82,149,0.35)_70%,transparent_100%)] origin-center"
       />
 
-      {/* 2. LEFT SILK CURTAIN (Royal Maroon Kanchipuram Silk with Gold Zari Border on Right Edge) */}
+      {/* 2. LEFT SILK CURTAIN (Royal Lavender Kanchipuram Silk with Gold Zari Border on Right Edge) */}
       <div
         ref={leftCurtainRef}
         onClick={handleOpenCurtains}
         onTouchStart={handleOpenCurtains}
-        className="absolute top-0 bottom-0 left-0 w-[51.5%] z-20 cursor-pointer overflow-hidden shadow-[12px_0_36px_rgba(0,0,0,0.8)] origin-left"
+        className="absolute top-0 bottom-0 left-0 w-[51.5%] z-20 cursor-pointer overflow-hidden shadow-[12px_0_36px_rgba(0,0,0,0.85)] origin-left"
         style={{ willChange: 'transform' }}
       >
-        {/* Photorealistic Silk Texture Base */}
+        {/* Photorealistic Silk Texture Base with Royal Lavender Tint */}
         <div
           className="absolute inset-0 bg-cover bg-right bg-no-repeat"
           style={{
             backgroundImage: "url('/textures/silk-curtain-maroon.jpg')",
-            filter: 'contrast(1.08) brightness(0.96)',
+            filter: 'hue-rotate(240deg) saturate(1.1) brightness(0.9)',
+          }}
+        />
+
+        {/* Rich Royal Lavender Gradient Overlay */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              'linear-gradient(135deg, rgba(45,20,61,0.7) 0%, rgba(94,50,122,0.45) 40%, rgba(124,82,149,0.3) 70%, rgba(34,12,48,0.75) 100%)',
           }}
         />
 
@@ -392,7 +372,7 @@ export default function WeddingIntro({ onOpenStart, onOpenComplete }) {
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              'repeating-linear-gradient(90deg, rgba(20,2,4,0.65) 0px, rgba(120,13,26,0.15) 24px, rgba(255,255,255,0.18) 48px, rgba(20,2,4,0.7) 72px, rgba(120,13,26,0.2) 96px)',
+              'repeating-linear-gradient(90deg, rgba(20,8,30,0.7) 0px, rgba(124,82,149,0.18) 24px, rgba(255,255,255,0.16) 48px, rgba(20,8,30,0.72) 72px, rgba(124,82,149,0.2) 96px)',
             mixBlendMode: 'multiply',
           }}
         />
@@ -402,44 +382,53 @@ export default function WeddingIntro({ onOpenStart, onOpenComplete }) {
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              'linear-gradient(105deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.12) 30%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.08) 80%, rgba(0,0,0,0.5) 100%)',
+              'linear-gradient(105deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.14) 30%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.08) 80%, rgba(0,0,0,0.5) 100%)',
           }}
         />
 
         {/* Intricate Antique Gold Zari Border down the Inner Edge */}
-        <div className="absolute top-0 bottom-0 right-0 w-8 sm:w-14 bg-gradient-to-r from-transparent via-[#D6A84F]/30 to-[#E5B85C]/90 border-l border-[#D6A84F]/40 shadow-[-4px_0_12px_rgba(0,0,0,0.5)] flex flex-col justify-around items-center py-4">
+        <div className="absolute top-0 bottom-0 right-0 w-8 sm:w-14 bg-gradient-to-r from-transparent via-[#C5A059]/40 to-[#E5C97F]/95 border-l border-[#C5A059]/50 shadow-[-4px_0_12px_rgba(0,0,0,0.5)] flex flex-col justify-around items-center py-4">
           {Array.from({ length: 18 }).map((_, i) => (
-            <div key={i} className="text-[10px] sm:text-xs text-[#FFFBEB] opacity-80 filter drop-shadow">
+            <div key={i} className="text-[10px] sm:text-xs text-[#FFFDF9] opacity-90 filter drop-shadow">
               ✦
             </div>
           ))}
         </div>
 
         {/* Bottom Gold Zari Hem Fringe */}
-        <div className="absolute bottom-0 inset-x-0 h-4 bg-gradient-to-t from-[#B8860B] via-[#E5B85C] to-transparent border-t border-[#FFFBEB]" />
+        <div className="absolute bottom-0 inset-x-0 h-4 bg-gradient-to-t from-[#B89344] via-[#E5C97F] to-transparent border-t border-[#FFFDF9]" />
 
         {/* Outer Left Silk Rope Tie-Back with Tassel */}
         <div className="absolute top-1/2 left-2 -translate-y-1/2 pointer-events-none flex flex-col items-center drop-shadow-lg">
-          <div className="w-1.5 h-16 rounded-full bg-gradient-to-b from-[#D6A84F] via-[#FBBF24] to-[#8C600B] shadow-md" />
-          <div className="w-5 h-7 rounded-b-full bg-gradient-to-b from-[#E5B85C] to-[#5C3D06] border-t border-white" />
+          <div className="w-1.5 h-16 rounded-full bg-gradient-to-b from-[#C5A059] via-[#E5C97F] to-[#7C5295] shadow-md" />
+          <div className="w-5 h-7 rounded-b-full bg-gradient-to-b from-[#E5C97F] to-[#572D75] border-t border-white" />
         </div>
       </div>
 
-      {/* 3. RIGHT SILK CURTAIN (Royal Maroon Silk with Gold Zari Border on Left Edge) */}
+      {/* 3. RIGHT SILK CURTAIN (Royal Lavender Silk with Gold Zari Border on Left Edge) */}
       <div
         ref={rightCurtainRef}
         onClick={handleOpenCurtains}
         onTouchStart={handleOpenCurtains}
-        className="absolute top-0 bottom-0 right-0 w-[51.5%] z-20 cursor-pointer overflow-hidden shadow-[-12px_0_36px_rgba(0,0,0,0.8)] origin-right"
+        className="absolute top-0 bottom-0 right-0 w-[51.5%] z-20 cursor-pointer overflow-hidden shadow-[-12px_0_36px_rgba(0,0,0,0.85)] origin-right"
         style={{ willChange: 'transform' }}
       >
-        {/* Photorealistic Silk Texture Mirrored so Zari Border meets in center */}
+        {/* Photorealistic Silk Texture Mirrored with Lavender Tint */}
         <div
           className="absolute inset-0 bg-cover bg-right bg-no-repeat"
           style={{
             backgroundImage: "url('/textures/silk-curtain-maroon.jpg')",
             transform: 'scaleX(-1)',
-            filter: 'contrast(1.08) brightness(0.96)',
+            filter: 'hue-rotate(240deg) saturate(1.1) brightness(0.9)',
+          }}
+        />
+
+        {/* Rich Royal Lavender Gradient Overlay */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              'linear-gradient(-135deg, rgba(45,20,61,0.7) 0%, rgba(94,50,122,0.45) 40%, rgba(124,82,149,0.3) 70%, rgba(34,12,48,0.75) 100%)',
           }}
         />
 
@@ -448,7 +437,7 @@ export default function WeddingIntro({ onOpenStart, onOpenComplete }) {
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              'repeating-linear-gradient(90deg, rgba(20,2,4,0.65) 0px, rgba(120,13,26,0.15) 24px, rgba(255,255,255,0.18) 48px, rgba(20,2,4,0.7) 72px, rgba(120,13,26,0.2) 96px)',
+              'repeating-linear-gradient(90deg, rgba(20,8,30,0.7) 0px, rgba(124,82,149,0.18) 24px, rgba(255,255,255,0.16) 48px, rgba(20,8,30,0.72) 72px, rgba(124,82,149,0.2) 96px)',
             mixBlendMode: 'multiply',
           }}
         />
@@ -458,26 +447,26 @@ export default function WeddingIntro({ onOpenStart, onOpenComplete }) {
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              'linear-gradient(-105deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.12) 30%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.08) 80%, rgba(0,0,0,0.5) 100%)',
+              'linear-gradient(-105deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.14) 30%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.08) 80%, rgba(0,0,0,0.5) 100%)',
           }}
         />
 
         {/* Intricate Antique Gold Zari Border down the Inner Edge */}
-        <div className="absolute top-0 bottom-0 left-0 w-8 sm:w-14 bg-gradient-to-l from-transparent via-[#D6A84F]/30 to-[#E5B85C]/90 border-r border-[#D6A84F]/40 shadow-[4px_0_12px_rgba(0,0,0,0.5)] flex flex-col justify-around items-center py-4">
+        <div className="absolute top-0 bottom-0 left-0 w-8 sm:w-14 bg-gradient-to-l from-transparent via-[#C5A059]/40 to-[#E5C97F]/95 border-r border-[#C5A059]/50 shadow-[4px_0_12px_rgba(0,0,0,0.5)] flex flex-col justify-around items-center py-4">
           {Array.from({ length: 18 }).map((_, i) => (
-            <div key={i} className="text-[10px] sm:text-xs text-[#FFFBEB] opacity-80 filter drop-shadow">
+            <div key={i} className="text-[10px] sm:text-xs text-[#FFFDF9] opacity-90 filter drop-shadow">
               ✦
             </div>
           ))}
         </div>
 
         {/* Bottom Gold Zari Hem Fringe */}
-        <div className="absolute bottom-0 inset-x-0 h-4 bg-gradient-to-t from-[#B8860B] via-[#E5B85C] to-transparent border-t border-[#FFFBEB]" />
+        <div className="absolute bottom-0 inset-x-0 h-4 bg-gradient-to-t from-[#B89344] via-[#E5C97F] to-transparent border-t border-[#FFFDF9]" />
 
         {/* Outer Right Silk Rope Tie-Back with Tassel */}
         <div className="absolute top-1/2 right-2 -translate-y-1/2 pointer-events-none flex flex-col items-center drop-shadow-lg">
-          <div className="w-1.5 h-16 rounded-full bg-gradient-to-b from-[#D6A84F] via-[#FBBF24] to-[#8C600B] shadow-md" />
-          <div className="w-5 h-7 rounded-b-full bg-gradient-to-b from-[#E5B85C] to-[#5C3D06] border-t border-white" />
+          <div className="w-1.5 h-16 rounded-full bg-gradient-to-b from-[#C5A059] via-[#E5C97F] to-[#7C5295] shadow-md" />
+          <div className="w-5 h-7 rounded-b-full bg-gradient-to-b from-[#E5C97F] to-[#572D75] border-t border-white" />
         </div>
       </div>
 
@@ -486,27 +475,27 @@ export default function WeddingIntro({ onOpenStart, onOpenComplete }) {
         {/* Left Valance Swag */}
         <div
           ref={leftValanceRef}
-          className="w-1/2 h-14 sm:h-20 bg-gradient-to-b from-[#3D070C] via-[#6B0D19] to-[#8C1423] rounded-br-[60px] border-b-2 border-[#D6A84F] shadow-xl origin-left"
+          className="w-1/2 h-14 sm:h-20 bg-gradient-to-b from-[#2B1038] via-[#4F256B] to-[#6E3A8F] rounded-br-[60px] border-b-2 border-[#C5A059] shadow-xl origin-left"
           style={{ willChange: 'transform' }}
         >
-          <div className="w-full h-full bg-[radial-gradient(ellipse_at_top,rgba(214,168,79,0.25)_0%,transparent_70%)]" />
+          <div className="w-full h-full bg-[radial-gradient(ellipse_at_top,rgba(229,201,127,0.3)_0%,transparent_70%)]" />
         </div>
 
         {/* Right Valance Swag */}
         <div
           ref={rightValanceRef}
-          className="w-1/2 h-14 sm:h-20 bg-gradient-to-b from-[#3D070C] via-[#6B0D19] to-[#8C1423] rounded-bl-[60px] border-b-2 border-[#D6A84F] shadow-xl origin-right"
+          className="w-1/2 h-14 sm:h-20 bg-gradient-to-b from-[#2B1038] via-[#4F256B] to-[#6E3A8F] rounded-bl-[60px] border-b-2 border-[#C5A059] shadow-xl origin-right"
           style={{ willChange: 'transform' }}
         >
-          <div className="w-full h-full bg-[radial-gradient(ellipse_at_top,rgba(214,168,79,0.25)_0%,transparent_70%)]" />
+          <div className="w-full h-full bg-[radial-gradient(ellipse_at_top,rgba(229,201,127,0.3)_0%,transparent_70%)]" />
         </div>
 
         {/* Central Auspicious Kalasam Medallion atop Curtains */}
         <div className="absolute top-1 sm:top-2 left-1/2 -translate-x-1/2 z-40 flex flex-col items-center">
-          <div className="w-9 sm:w-12 h-9 sm:h-12 rounded-full bg-gradient-to-b from-[#E5B85C] via-[#B8860B] to-[#5C3D06] border-2 border-[#FFFBEB] shadow-[0_4px_16px_rgba(214,168,79,0.7)] flex items-center justify-center">
-            <span className="text-base sm:text-lg font-serif font-bold text-[#FFFBEB]">ॐ</span>
+          <div className="w-9 sm:w-12 h-9 sm:h-12 rounded-full bg-gradient-to-b from-[#E5C97F] via-[#C5A059] to-[#63337D] border-2 border-[#FFFDF9] shadow-[0_4px_16px_rgba(214,168,79,0.7)] flex items-center justify-center">
+            <span className="text-base sm:text-lg font-serif font-bold text-[#FFFDF9]">ॐ</span>
           </div>
-          <div className="w-1.5 h-3 bg-[#D6A84F] rounded-b-full shadow-sm" />
+          <div className="w-1.5 h-3 bg-[#C5A059] rounded-b-full shadow-sm" />
         </div>
       </div>
 
@@ -516,40 +505,40 @@ export default function WeddingIntro({ onOpenStart, onOpenComplete }) {
       <KuthuvilakkuLamp side="left" />
       <KuthuvilakkuLamp side="right" />
 
-      {/* 6. CENTER INVITATION CARD (Floating over the Curtains) */}
+      {/* 6. CENTER ROYAL INVITATION CARD (Floating over the Curtains) */}
       <AnimatePresence>
         {!isOpening && (
           <div
             ref={cardRef}
             onClick={handleOpenCurtains}
             onTouchStart={handleOpenCurtains}
-            className="absolute inset-0 z-35 flex flex-col items-center justify-center px-4 cursor-pointer text-center"
+            className="absolute inset-0 z-35 flex flex-col items-center justify-center px-3 sm:px-4 cursor-pointer text-center"
           >
             {/* Elegant Royal Invitation Card Container */}
             <motion.div
               initial={{ opacity: 0, y: 25, scale: 0.96 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-              className="relative max-w-lg w-full px-4 sm:px-10 py-5 sm:py-9 rounded-2xl sm:rounded-3xl bg-[#1A0604]/88 border-2 border-[#D6A84F]/70 shadow-[0_20px_60px_rgba(0,0,0,0.85),inset_0_1px_2px_rgba(255,255,255,0.2)] backdrop-blur-md flex flex-col items-center max-h-[92vh] justify-center"
+              className="relative max-w-lg w-full px-4 sm:px-9 py-5 sm:py-8 rounded-2xl sm:rounded-3xl bg-[#230F33]/92 border-2 border-[#C5A059]/80 shadow-[0_20px_60px_rgba(15,5,22,0.9),inset_0_1px_2px_rgba(255,255,255,0.2)] backdrop-blur-md flex flex-col items-center max-h-[94vh] justify-center"
             >
               {/* Corner Gold Floral Accents */}
-              <div className="absolute top-2 left-2.5 text-[#D6A84F] text-xs sm:text-sm">✦</div>
-              <div className="absolute top-2 right-2.5 text-[#D6A84F] text-xs sm:text-sm">✦</div>
-              <div className="absolute bottom-2 left-2.5 text-[#D6A84F] text-xs sm:text-sm">✦</div>
-              <div className="absolute bottom-2 right-2.5 text-[#D6A84F] text-xs sm:text-sm">✦</div>
+              <div className="absolute top-2 left-2.5 text-[#C5A059] text-xs sm:text-sm">✦</div>
+              <div className="absolute top-2 right-2.5 text-[#C5A059] text-xs sm:text-sm">✦</div>
+              <div className="absolute bottom-2 left-2.5 text-[#C5A059] text-xs sm:text-sm">✦</div>
+              <div className="absolute bottom-2 right-2.5 text-[#C5A059] text-xs sm:text-sm">✦</div>
 
               {/* Auspicious Sacred Invocation */}
               <div className="flex items-center gap-1.5 sm:gap-2 mb-1 sm:mb-2">
-                <span className="text-xs sm:text-sm text-[#F59E0B]">🪷</span>
-                <span className="text-[10px] sm:text-sm font-serif font-bold text-[#D6A84F] tracking-[0.2em] sm:tracking-[0.25em] uppercase">
+                <span className="text-xs sm:text-sm text-[#E5C97F]">🪷</span>
+                <span className="text-[10px] sm:text-xs font-serif font-bold text-[#E5C97F] tracking-[0.2em] sm:tracking-[0.25em] uppercase">
                   ✦ ॐ ஸ்ரீ கணேசாய நமஹ ✦
                 </span>
-                <span className="text-xs sm:text-sm text-[#F59E0B]">🪷</span>
+                <span className="text-xs sm:text-sm text-[#E5C97F]">🪷</span>
               </div>
 
               {/* Sub-header: "Together with our families" */}
               <p
-                className="text-xs sm:text-base text-[#FDE68A]/90 font-serif italic tracking-wider mb-1 sm:mb-2 font-light"
+                className="text-xs sm:text-sm text-[#EEDBFA] font-serif italic tracking-wider mb-0.5 sm:mb-1 font-light"
                 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
               >
                 Together with our families
@@ -557,7 +546,7 @@ export default function WeddingIntro({ onOpenStart, onOpenComplete }) {
 
               {/* Main Headline: "You're Invited" */}
               <h1
-                className="text-xl sm:text-4xl font-extrabold text-[#FFF8EC] font-serif tracking-widest uppercase mb-0.5 sm:mb-1 drop-shadow-md"
+                className="text-xl sm:text-3.5xl font-extrabold text-[#FFFDF9] font-serif tracking-widest uppercase mb-0.5 sm:mb-1 drop-shadow-md"
                 style={{ fontFamily: "'Cinzel', Georgia, serif" }}
               >
                 You're Invited
@@ -565,37 +554,69 @@ export default function WeddingIntro({ onOpenStart, onOpenComplete }) {
 
               {/* "To Celebrate Our Wedding" */}
               <p
-                className="text-[10px] sm:text-sm text-[#D6A84F] font-serif uppercase tracking-[0.18em] sm:tracking-[0.2em] mb-2 sm:mb-4 font-semibold"
+                className="text-[10px] sm:text-xs text-[#C5A059] font-serif uppercase tracking-[0.18em] sm:tracking-[0.2em] mb-2 sm:mb-3 font-semibold"
                 style={{ fontFamily: "'Cinzel', serif" }}
               >
-                To Celebrate Our Wedding
+                To Celebrate Our Wedding Celebrations
               </p>
 
               {/* Bride & Groom Names in Royal Gold Typography */}
-              <div className="w-full py-2 sm:py-3 my-0.5 sm:my-1 border-y border-[#D6A84F]/40 flex flex-col items-center">
+              <div className="w-full py-2 my-0.5 border-y border-[#C5A059]/40 flex flex-col items-center">
                 <p
-                  className="text-xl sm:text-3.5xl font-bold text-[#E5B85C] font-serif tracking-wide drop-shadow-md"
+                  className="text-xl sm:text-3xl font-bold text-[#F3E1B6] font-serif tracking-wide drop-shadow-md"
                   style={{ fontFamily: "'Cinzel', 'Marcellus', Georgia, serif" }}
                 >
                   {couple.groom}
                 </p>
                 <span
-                  className="text-xl sm:text-3xl text-[#FFF8EC] my-0 sm:my-0.5 font-light"
+                  className="text-xl sm:text-2.5xl text-[#FFFDF9] my-0 sm:my-0.5 font-light"
                   style={{ fontFamily: "'Great Vibes', cursive" }}
                 >
                   &amp;
                 </span>
                 <p
-                  className="text-xl sm:text-3.5xl font-bold text-[#E5B85C] font-serif tracking-wide drop-shadow-md"
+                  className="text-xl sm:text-3xl font-bold text-[#F3E1B6] font-serif tracking-wide drop-shadow-md"
                   style={{ fontFamily: "'Cinzel', 'Marcellus', Georgia, serif" }}
                 >
                   {couple.bride}
                 </p>
               </div>
 
-              {/* Date & Muhurtham Pill */}
-              <div className="mt-2 sm:mt-3 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-[#3D070C]/80 border border-[#D6A84F]/50 text-[10px] sm:text-sm text-[#FFFBEB] font-serif tracking-wider">
-                {event.dayOfWeek}, {event.date} • {event.time}
+              {/* Dual Events Summary Cards (Marriage & Reception) */}
+              <div className="w-full grid grid-cols-2 gap-2 my-2.5 sm:my-3">
+                {/* Marriage Pill */}
+                <div className="flex flex-col items-center p-2 rounded-xl bg-[#3D1E56]/85 border border-[#C5A059]/45 text-center">
+                  <div className="inline-flex items-center gap-1 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#F2DFB3]">
+                    <Heart className="w-2.5 h-2.5 text-[#C5A059] fill-[#C5A059]" />
+                    <span>Marriage</span>
+                  </div>
+                  <p className="text-[11px] sm:text-xs font-bold text-[#FFFDF9] font-serif mt-0.5">
+                    {marriage?.dateFormatted || "Nov 29, 2026"}
+                  </p>
+                  <p className="text-[9px] sm:text-[10px] text-[#EADBFA] font-serif">
+                    {marriage?.timing || "9:00 AM – 10:30 AM"}
+                  </p>
+                  <p className="text-[9px] sm:text-[10px] text-[#C5A059] font-serif truncate w-full mt-0.5">
+                    {marriage?.venueName}, {marriage?.location}
+                  </p>
+                </div>
+
+                {/* Reception Pill */}
+                <div className="flex flex-col items-center p-2 rounded-xl bg-[#3D1E56]/85 border border-[#C5A059]/45 text-center">
+                  <div className="inline-flex items-center gap-1 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#F2DFB3]">
+                    <Sparkles className="w-2.5 h-2.5 text-[#C5A059]" />
+                    <span>Reception</span>
+                  </div>
+                  <p className="text-[11px] sm:text-xs font-bold text-[#FFFDF9] font-serif mt-0.5">
+                    {reception?.dateFormatted || "Dec 02, 2026"}
+                  </p>
+                  <p className="text-[9px] sm:text-[10px] text-[#EADBFA] font-serif">
+                    {reception?.timing || "6:30 PM – 9:00 PM"}
+                  </p>
+                  <p className="text-[9px] sm:text-[10px] text-[#C5A059] font-serif truncate w-full mt-0.5">
+                    {reception?.venueName}, {reception?.location}
+                  </p>
+                </div>
               </div>
 
               {/* "Touch to Open Invitation" Glowing Royal Button */}
@@ -603,27 +624,27 @@ export default function WeddingIntro({ onOpenStart, onOpenComplete }) {
                 animate={{
                   scale: [1, 1.04, 1],
                   boxShadow: [
-                    '0 0 16px rgba(214, 168, 79, 0.4)',
-                    '0 0 32px rgba(214, 168, 79, 0.85)',
-                    '0 0 16px rgba(214, 168, 79, 0.4)',
+                    '0 0 16px rgba(197, 160, 89, 0.4)',
+                    '0 0 32px rgba(197, 160, 89, 0.85)',
+                    '0 0 16px rgba(197, 160, 89, 0.4)',
                   ],
                 }}
                 transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
-                className="mt-3.5 sm:mt-5 inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-9 py-2.5 sm:py-3 rounded-full bg-gradient-to-r from-[#A83F25] via-[#8C321C] to-[#A83F25] border-2 border-[#E5B85C] text-[#FFF8EC] shadow-2xl cursor-pointer"
+                className="mt-1 sm:mt-2 inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-9 py-2.5 sm:py-3 rounded-full bg-gradient-to-r from-[#7C5295] via-[#5F307A] to-[#7C5295] border-2 border-[#E5C97F] text-[#FFFDF9] shadow-2xl cursor-pointer"
               >
-                <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#D6A84F] animate-spin" style={{ animationDuration: '6s' }} />
+                <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#F3E1B6] animate-spin" style={{ animationDuration: '6s' }} />
                 <span
-                  className="text-[11px] sm:text-sm font-bold font-serif uppercase tracking-[0.16em] sm:tracking-[0.2em] text-[#FFF8EC]"
+                  className="text-[11px] sm:text-sm font-bold font-serif uppercase tracking-[0.16em] sm:tracking-[0.2em] text-[#FFFDF9]"
                   style={{ fontFamily: "'Cinzel', serif" }}
                 >
                   Touch to Open Invitation
                 </span>
-                <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#D6A84F] animate-spin" style={{ animationDuration: '6s' }} />
+                <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#F3E1B6] animate-spin" style={{ animationDuration: '6s' }} />
               </motion.div>
 
               {/* Tap instruction */}
-              <p className="mt-2 sm:mt-2.5 text-[10px] sm:text-xs text-[#D6A84F]/85 font-serif tracking-wider">
-                Tap anywhere on the sacred silk curtains
+              <p className="mt-2 text-[10px] sm:text-xs text-[#C5A059]/90 font-serif tracking-wider">
+                Tap anywhere on the silk curtains to enter
               </p>
             </motion.div>
           </div>

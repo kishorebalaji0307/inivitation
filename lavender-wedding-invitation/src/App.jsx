@@ -20,8 +20,8 @@ function App() {
   const musicPlayerRef = useRef(null);
 
   return (
-    <div className="relative min-h-screen bg-[#FFF8EC] text-[#45180D] overflow-x-hidden selection:bg-[#A83F25] selection:text-[#FFF8EC]">
-      {/* South Indian Silk Curtain Opening Intro */}
+    <div className="relative min-h-screen bg-[#FAF6FD] text-[#3E2356] overflow-x-hidden selection:bg-[#7C5295] selection:text-[#FAF6FD]">
+      {/* South Indian Royal Silk Curtain Opening Intro Screen */}
       <WeddingIntro
         onOpenStart={() => musicPlayerRef.current?.startAudio()}
         onOpenComplete={() => setHasOpenedIntro(true)}
@@ -30,7 +30,7 @@ function App() {
       {/* Persistent Background Music Controller */}
       <WeddingMusicPlayer ref={musicPlayerRef} />
 
-      {/* Global Traditional South Indian Wedding Accents */}
+      {/* Global Lavender & Gold Wedding Accents */}
       <FloralGarlandTop />
       <HangingBells />
       <SideDiyas />
@@ -42,19 +42,19 @@ function App() {
         {/* Section 1: Animated Wedding Hero */}
         <WeddingHero />
 
-        {/* Section 2: Wedding Welcome */}
+        {/* Section 2: Wedding Welcome & Couple Portrait */}
         <WeddingWelcome />
 
-        {/* Section 3: Wedding Ceremony Details */}
+        {/* Section 3: Dual Event Wedding Details (Marriage & Reception) */}
         <WeddingDetails />
 
-        {/* Section 4: Live Countdown Timer */}
+        {/* Section 4: Live Countdown Timer to Marriage */}
         <WeddingCountdown />
 
-        {/* Section 5: Wedding Venue with Google Maps */}
+        {/* Section 5: Dual Wedding Venues with Google Maps */}
         <WeddingVenue />
 
-        {/* Section 8: Final Invitation */}
+        {/* Section 6: Final Wedding Closing Invitation */}
         <WeddingClosing />
       </main>
     </div>
