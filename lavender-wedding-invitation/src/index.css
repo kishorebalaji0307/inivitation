@@ -1,19 +1,36 @@
 @import "tailwindcss";
 
 :root {
-  --color-lavender-bg: #FAF6FD;
+  --color-lavender-bg: #FCFAFF;
   --color-lavender-surface: #FFFFFF;
-  --color-lavender-subtle: #F2EBF9;
-  --color-lavender-card: #FDFBFE;
-  --color-lavender-primary: #7C5295;
-  --color-lavender-dark: #3E2356;
-  --color-lavender-border: #D8C3EC;
+  --color-lavender-subtle: #F4EDFB;
+  --color-lavender-card: #FFFFFF;
+  --color-lavender-primary: #5A3678;
+  --color-lavender-dark: #2A1742;
+  --color-lavender-border: #E8DCF4;
   --color-antique-gold: #C5A059;
   --color-gold-light: #F2E1B6;
   --color-gold-border: #D8B76E;
   --font-serif-royal: 'Cinzel', 'Marcellus', 'Cormorant Garamond', Georgia, serif;
   --font-serif-elegant: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
-  --font-script: 'Great Vibes', cursive;
+  --font-script: 'Alex Brush', 'Great Vibes', cursive;
+  --font-sans-clean: 'Montserrat', sans-serif;
+}
+
+.font-script {
+  font-family: 'Alex Brush', 'Great Vibes', cursive;
+}
+
+.font-serif-royal {
+  font-family: 'Cinzel', 'Marcellus', Georgia, serif;
+}
+
+.font-serif-elegant {
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+}
+
+.font-sans-clean {
+  font-family: 'Montserrat', sans-serif;
 }
 
 html {
@@ -29,22 +46,22 @@ body {
   overflow-x: hidden;
 }
 
-/* Custom Scrollbar in Lavender & Soft Gold */
+/* Custom Scrollbar in Lavender */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #FAF6FD;
+  background: #FCFAFF;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #B999D6;
+  background: #C4A7E0;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #7C5295;
+  background: #8E65B5;
 }
 
 /* Subtle floating animation keyframes */

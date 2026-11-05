@@ -8,11 +8,8 @@ import WeddingCountdown from './components/WeddingCountdown';
 import WeddingVenue from './components/WeddingVenue';
 import WeddingClosing from './components/WeddingClosing';
 import {
-  FloralGarlandTop,
-  HangingBells,
-  SideDiyas,
   FloatingPetals,
-  SideKolamDots,
+  LavenderCornerFlorals,
 } from './components/TraditionalDecorations';
 
 function App() {
@@ -30,12 +27,9 @@ function App() {
       {/* Persistent Background Music Controller */}
       <WeddingMusicPlayer ref={musicPlayerRef} />
 
-      {/* Global Lavender & Gold Wedding Accents */}
-      <FloralGarlandTop />
-      <HangingBells />
-      <SideDiyas />
+      {/* Global Lavender & Botanical Accents */}
+      <LavenderCornerFlorals />
       <FloatingPetals />
-      <SideKolamDots />
 
       {/* Main Sections in Exact Required Order */}
       <main className="relative z-10">
