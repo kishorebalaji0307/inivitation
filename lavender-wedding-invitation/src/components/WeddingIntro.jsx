@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Heart } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 import { weddingData } from '../data/weddingData';
 
 /**
@@ -18,7 +18,7 @@ function FloatingPetals({ active }) {
         accentColor: type === 0 ? '#865CA7' : type === 1 ? '#C5A059' : '#EDE0F8',
         left: Math.random() * 100,
         delay: Math.random() * 3.5,
-        duration: 6 + Math.random() * 4,
+        duration: 6.5 + Math.random() * 4.5,
         size: 11 + Math.random() * 12,
         depth: 0.6 + Math.random() * 0.6,
       };
@@ -27,7 +27,7 @@ function FloatingPetals({ active }) {
 
   return (
     <div
-      className={`fixed inset-0 pointer-events-none z-10 overflow-hidden transition-opacity duration-700 ${
+      className={`fixed inset-0 pointer-events-none z-10 overflow-hidden transition-opacity duration-1000 ${
         active ? 'opacity-100' : 'opacity-0'
       }`}
       aria-hidden="true"
@@ -98,13 +98,10 @@ function CardCornerFloral({ className = '', style = {} }) {
             <stop offset="100%" stopColor="#5E8367" />
           </linearGradient>
         </defs>
-        {/* Branch */}
         <path d="M0 0 Q35 15 65 50 T90 90" stroke="#75987E" strokeWidth="1.2" strokeLinecap="round" opacity="0.75" />
-        {/* Leaves */}
         <path d="M32 15 C45 6 56 9 58 19 C48 23 38 21 32 15 Z" fill="url(#leafSage)" opacity="0.75" />
         <path d="M15 32 C6 45 9 56 19 58 C23 48 21 38 15 32 Z" fill="url(#leafSage)" opacity="0.75" />
         <path d="M52 38 C64 30 72 35 71 44 C62 46 55 43 52 38 Z" fill="url(#leafSage)" opacity="0.7" />
-        {/* Blossoms */}
         <circle cx="42" cy="42" r="11" fill="url(#petalLavender)" opacity="0.88" />
         <circle cx="40" cy="40" r="6" fill="#4E2370" opacity="0.9" />
         <circle cx="40" cy="40" r="2" fill="#E5C97F" />
@@ -134,7 +131,7 @@ function LotusFiligree({ className = '' }) {
 
 /**
  * Elegant Royal Lavender Wedding Invitation Card Intro Screen
- * Features a realistic, subtle 3D card opening animation.
+ * Features a gradual, serene entrance and smooth, graceful 3D card opening.
  */
 export default function WeddingIntro({ onOpenStart, onOpenComplete }) {
   const containerRef = useRef(null);
@@ -165,7 +162,7 @@ export default function WeddingIntro({ onOpenStart, onOpenComplete }) {
       }
     }
 
-    // 2. Smooth 3D Card Opening Animation
+    // 2. Smooth and Graceful Card Opening Animation (Relaxed & Natural Timing)
     const tl = gsap.timeline({
       onComplete: () => {
         setIsFinished(true);
@@ -174,13 +171,13 @@ export default function WeddingIntro({ onOpenStart, onOpenComplete }) {
     });
     timelineRef.current = tl;
 
-    // A. 3D Card opens along its left spine
+    // A. 3D Card smoothly opens along its left spine with a natural ease curve
     if (frontCoverRef.current) {
       tl.to(
         frontCoverRef.current,
         {
-          rotateY: -160,
-          duration: 1.1,
+          rotateY: -155,
+          duration: 1.35,
           ease: 'power2.inOut',
           transformOrigin: 'left center',
         },
@@ -188,66 +185,67 @@ export default function WeddingIntro({ onOpenStart, onOpenComplete }) {
       );
     }
 
-    // B. Inside page reveals with soft golden illumination
+    // B. Inside page reveals with soft golden-lavender illumination
     if (insidePageRef.current) {
       tl.to(
         insidePageRef.current,
         {
           opacity: 1,
-          duration: 0.7,
+          duration: 0.9,
           ease: 'power2.out',
         },
-        0.15
+        0.2
       );
     }
 
-    // C. Center warm golden-lavender light glow expands
+    // C. Center warm golden-lavender ambient light glow expands gracefully
     if (lightGlowRef.current) {
       tl.to(
         lightGlowRef.current,
         {
-          opacity: 1,
-          scale: 1.8,
-          duration: 0.8,
+          opacity: 0.9,
+          scale: 1.9,
+          duration: 1.1,
           ease: 'power2.out',
         },
-        0.1
+        0.15
       );
       tl.to(
         lightGlowRef.current,
         {
           opacity: 0,
-          duration: 0.5,
+          duration: 0.7,
           ease: 'power1.out',
         },
-        0.75
+        1.0
       );
     }
 
-    // D. Card gently scales and dissolves smoothly into the main website
+    // D. Card gently scales and dissolves smoothly into the main wedding hero section
     if (cardContainerRef.current) {
       tl.to(
         cardContainerRef.current,
         {
-          scale: 1.12,
-          y: -10,
-          duration: 0.65,
+          scale: 1.08,
+          y: -8,
+          opacity: 0,
+          duration: 0.8,
           ease: 'power2.inOut',
         },
-        0.5
+        0.85
       );
     }
 
-    // E. Intro container fades out seamlessly revealing the wedding hero
+    // E. Intro background fades out seamlessly revealing the wedding website
     if (containerRef.current) {
       tl.to(
         containerRef.current,
         {
           opacity: 0,
-          duration: 0.55,
+          duration: 0.75,
           ease: 'power1.inOut',
         },
-        0.85
+        1.05
       );
     }
   };
@@ -277,14 +275,20 @@ export default function WeddingIntro({ onOpenStart, onOpenComplete }) {
       {/* Floating flower petals */}
       <FloatingPetals active={!isFinished} />
 
-      {/* ── 3D CARD CONTAINER ── */}
-      <div
+      {/* ── 3D CARD CONTAINER WITH GRADUAL FADE-IN & GENTLE SCALE-UP ── */}
+      <motion.div
         ref={cardContainerRef}
+        initial={{ opacity: 0, y: 26, scale: 0.94 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{
+          duration: 1.35,
+          ease: [0.22, 1, 0.36, 1], // Smooth, gradual natural entrance
+        }}
         className="relative z-20 w-full max-w-[400px] sm:max-w-[440px] max-h-[94vh] flex items-center justify-center"
         style={{ perspective: '1400px' }}
       >
         {/* Outer Radiant Soft Glow */}
-        <div className="absolute -inset-4 sm:-inset-6 rounded-3xl bg-gradient-to-tr from-[#9B72C3]/25 via-[#E5C97F]/20 to-[#FAF6FD]/30 blur-xl pointer-events-none" />
+        <div className="absolute -inset-4 sm:-inset-6 rounded-3xl bg-gradient-to-tr from-[#9B72C3]/20 via-[#E5C97F]/18 to-[#FAF6FD]/30 blur-xl pointer-events-none" />
 
         {/* ────── 1. INSIDE RIGHT PAGE (Revealed as card opens) ────── */}
         <div
@@ -327,7 +331,7 @@ export default function WeddingIntro({ onOpenStart, onOpenComplete }) {
           ref={frontCoverRef}
           onClick={handleOpenInvitation}
           onTouchStart={handleOpenInvitation}
-          className="relative w-full rounded-3xl bg-white/95 backdrop-blur-md border-2 border-[#D8C2EE] shadow-[0_20px_55px_-10px_rgba(85,38,124,0.28),0_0_0_1px_rgba(255,255,255,0.8)_inset] px-5 sm:px-8 py-6 sm:py-9 flex flex-col items-center justify-center text-center cursor-pointer transition-shadow hover:shadow-[0_25px_65px_-8px_rgba(85,38,124,0.35)] overflow-hidden z-20"
+          className="relative w-full rounded-3xl bg-white/95 backdrop-blur-md border-2 border-[#D8C2EE] shadow-[0_20px_55px_-10px_rgba(85,38,124,0.25),0_0_0_1px_rgba(255,255,255,0.8)_inset] px-5 sm:px-8 py-6 sm:py-9 flex flex-col items-center justify-center text-center cursor-pointer transition-shadow hover:shadow-[0_25px_65px_-8px_rgba(85,38,124,0.32)] overflow-hidden z-20"
           style={{
             transformStyle: 'preserve-3d',
             backfaceVisibility: 'hidden',
@@ -385,32 +389,45 @@ export default function WeddingIntro({ onOpenStart, onOpenComplete }) {
             {marriage?.venueName || "RV Mahal"}, {marriage?.location || "Manaparai"} &bull; {marriage?.timing || "9:00 AM – 10:30 AM"}
           </p>
 
-          {/* 5. "Touch to Open Invitation" Glowing Royal Button */}
+          {/* 5. "Touch to Open Invitation" Button (Gradually Appears After the Card) */}
           <motion.div
+            initial={{ opacity: 0, y: 12, scale: 0.95 }}
             animate={{
-              scale: [1, 1.03, 1],
+              opacity: 1,
+              y: 0,
+              scale: [1, 1.025, 1],
               boxShadow: [
                 '0 0 16px rgba(197, 160, 89, 0.4), 0 4px 14px rgba(111, 68, 140, 0.25)',
                 '0 0 28px rgba(197, 160, 89, 0.8), 0 6px 20px rgba(111, 68, 140, 0.4)',
                 '0 0 16px rgba(197, 160, 89, 0.4), 0 4px 14px rgba(111, 68, 140, 0.25)',
               ],
             }}
-            transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
+            transition={{
+              opacity: { delay: 1.0, duration: 0.9, ease: [0.22, 1, 0.36, 1] },
+              y: { delay: 1.0, duration: 0.9, ease: [0.22, 1, 0.36, 1] },
+              scale: { delay: 1.9, duration: 2.4, repeat: Infinity, ease: 'easeInOut' },
+              boxShadow: { delay: 1.9, duration: 2.4, repeat: Infinity, ease: 'easeInOut' },
+            }}
             className="inline-flex items-center gap-2 sm:gap-2.5 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full bg-gradient-to-r from-[#6F448C] via-[#895CA6] to-[#6F448C] border-2 border-[#E5C97F] text-[#FFFDF9] shadow-lg cursor-pointer transition-transform hover:scale-105 active:scale-95"
           >
-            <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#F3E1B6] animate-spin" style={{ animationDuration: '6s' }} />
+            <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#F3E1B6] animate-spin" style={{ animationDuration: '7s' }} />
             <span className="font-serif-royal text-xs sm:text-sm font-bold tracking-[0.16em] sm:tracking-[0.18em] uppercase text-[#FFFDF9]">
               Touch to Open Invitation
             </span>
-            <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#F3E1B6] animate-spin" style={{ animationDuration: '6s' }} />
+            <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#F3E1B6] animate-spin" style={{ animationDuration: '7s' }} />
           </motion.div>
 
           {/* 6. Romantic Sub-Hint */}
-          <p className="mt-2.5 text-[10px] sm:text-[11px] text-[#82619E] font-serif-elegant italic tracking-wide">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.3, duration: 0.8 }}
+            className="mt-2.5 text-[10px] sm:text-[11px] text-[#82619E] font-serif-elegant italic tracking-wide"
+          >
             Touch to unfold our wedding invitation &bull; Music will play ♫
-          </p>
+          </motion.p>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
