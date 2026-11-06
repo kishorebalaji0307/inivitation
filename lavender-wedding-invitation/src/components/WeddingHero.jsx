@@ -59,7 +59,7 @@ export default function WeddingHero() {
 
   return (
     <section className="relative w-full pt-10 sm:pt-16 pb-12 sm:pb-16 px-3 sm:px-6 overflow-hidden">
-      
+
       {/* ── CENTRAL FROSTED ARCH CARD (Matches Reference Design) ── */}
       <motion.div
         initial={{ opacity: 0, y: 28 }}
@@ -174,7 +174,7 @@ export default function WeddingHero() {
         className="relative z-10 w-full max-w-xl sm:max-w-2xl md:max-w-3xl mx-auto mt-6 sm:mt-10 px-2 sm:px-6"
       >
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-2 items-center py-4 sm:py-6 bg-white/70 backdrop-blur-sm rounded-2xl border border-[#EADBFA]/70 shadow-xs">
-          
+
           {/* Column 1: DATE */}
           <div className="flex flex-col items-center text-center px-2 md:border-r border-[#E8DCF4]">
             <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#F3EBFB] border border-[#E2D1F4] flex items-center justify-center text-[#734A8E] mb-2 shadow-xs">
