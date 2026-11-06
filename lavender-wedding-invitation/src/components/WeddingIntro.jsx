@@ -9,7 +9,7 @@ import { weddingData } from '../data/weddingData';
  */
 function FloatingPetals({ active }) {
   const petals = useRef(
-    Array.from({ length: 24 }, (_, i) => {
+    Array.from({ length: 26 }, (_, i) => {
       const type = i % 3; // 0: Lavender, 1: Gold, 2: Jasmine
       return {
         id: i,
@@ -19,7 +19,7 @@ function FloatingPetals({ active }) {
         left: Math.random() * 100,
         delay: Math.random() * 3.5,
         duration: 6.5 + Math.random() * 4.5,
-        size: 11 + Math.random() * 12,
+        size: 11 + Math.random() * 13,
         depth: 0.6 + Math.random() * 0.6,
       };
     })
@@ -66,7 +66,7 @@ function FloatingPetals({ active }) {
               <path
                 d="M14 0 C22 0 28 8 28 18 C28 28 20 36 14 36 C8 36 0 28 0 18 C0 8 6 0 14 0 Z"
                 fill={`url(#introPetal-${p.id})`}
-                opacity="0.85"
+                opacity="0.88"
               />
             </svg>
           )}
@@ -77,61 +77,126 @@ function FloatingPetals({ active }) {
 }
 
 /**
- * Botanical Lavender Corner Floral Motif (SVG)
+ * Botanical Lavender Watercolor Corner Bouquet (SVG)
+ * Exquisite botanical floral spray with layered petals and soft sage leaves.
  */
 function CardCornerFloral({ className = '', style = {} }) {
   return (
     <div
-      className={`absolute pointer-events-none select-none z-10 w-16 sm:w-20 h-16 sm:h-20 ${className}`}
+      className={`absolute pointer-events-none select-none z-10 w-20 sm:w-26 h-20 sm:h-26 ${className}`}
       style={style}
       aria-hidden="true"
     >
-      <svg viewBox="0 0 100 100" fill="none" className="w-full h-full drop-shadow-xs">
+      <svg viewBox="0 0 120 120" fill="none" className="w-full h-full drop-shadow-xs">
         <defs>
-          <linearGradient id="petalLavender" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#D8C2EE" />
-            <stop offset="50%" stopColor="#A278CC" />
-            <stop offset="100%" stopColor="#6C3E91" />
+          <linearGradient id="petalDeepLav" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#C4A3E4" />
+            <stop offset="50%" stopColor="#915EB7" />
+            <stop offset="100%" stopColor="#5E2F83" />
           </linearGradient>
-          <linearGradient id="leafSage" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#B3CFB7" />
-            <stop offset="100%" stopColor="#5E8367" />
+          <linearGradient id="petalSoftLav" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#FAF2FF" />
+            <stop offset="60%" stopColor="#D2B4EE" />
+            <stop offset="100%" stopColor="#9C6DC3" />
+          </linearGradient>
+          <linearGradient id="leafSageGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#C1DAC5" />
+            <stop offset="60%" stopColor="#7E9F85" />
+            <stop offset="100%" stopColor="#4E6D54" />
           </linearGradient>
         </defs>
-        <path d="M0 0 Q35 15 65 50 T90 90" stroke="#75987E" strokeWidth="1.2" strokeLinecap="round" opacity="0.75" />
-        <path d="M32 15 C45 6 56 9 58 19 C48 23 38 21 32 15 Z" fill="url(#leafSage)" opacity="0.75" />
-        <path d="M15 32 C6 45 9 56 19 58 C23 48 21 38 15 32 Z" fill="url(#leafSage)" opacity="0.75" />
-        <path d="M52 38 C64 30 72 35 71 44 C62 46 55 43 52 38 Z" fill="url(#leafSage)" opacity="0.7" />
-        <circle cx="42" cy="42" r="11" fill="url(#petalLavender)" opacity="0.88" />
-        <circle cx="40" cy="40" r="6" fill="#4E2370" opacity="0.9" />
-        <circle cx="40" cy="40" r="2" fill="#E5C97F" />
-        <circle cx="62" cy="28" r="7.5" fill="url(#petalLavender)" opacity="0.8" />
-        <circle cx="28" cy="62" r="7.5" fill="url(#petalLavender)" opacity="0.8" />
+
+        {/* Stems */}
+        <g stroke="#67886E" strokeWidth="1.2" strokeLinecap="round" opacity="0.8">
+          <path d="M0 0 Q40 18 70 55 T108 108" />
+          <path d="M45 25 Q65 15 88 20" />
+          <path d="M25 45 Q15 65 20 88" />
+        </g>
+
+        {/* Sage Leaves */}
+        <g fill="url(#leafSageGrad)" opacity="0.8">
+          <path d="M38 18 C52 8 64 12 65 22 C53 26 43 24 38 18 Z" />
+          <path d="M18 38 C8 52 12 64 22 65 C26 53 24 43 18 38 Z" />
+          <path d="M60 42 C74 34 84 40 82 50 C71 52 63 48 60 42 Z" />
+          <path d="M42 60 C34 74 40 84 50 82 C52 71 48 63 42 60 Z" />
+          <path d="M80 20 C92 14 100 20 98 28 C88 29 82 25 80 20 Z" />
+          <path d="M20 80 C14 92 20 100 28 98 C29 88 25 82 20 80 Z" />
+        </g>
+
+        {/* Small Lavender Buds */}
+        <g fill="url(#petalDeepLav)" opacity="0.85">
+          <circle cx="92" cy="22" r="3" />
+          <circle cx="102" cy="30" r="2.5" />
+          <circle cx="22" cy="92" r="3" />
+          <circle cx="30" cy="102" r="2.5" />
+        </g>
+
+        {/* Outer Flower: Top Right */}
+        <g transform="translate(74, 34)">
+          <ellipse cx="-7" cy="0" rx="8" ry="6" fill="url(#petalSoftLav)" opacity="0.85" />
+          <ellipse cx="7" cy="-2" rx="8" ry="6" fill="url(#petalSoftLav)" opacity="0.85" />
+          <circle cx="0" cy="0" r="6" fill="url(#petalDeepLav)" />
+          <circle cx="0" cy="0" r="1.5" fill="#E5C97F" />
+        </g>
+
+        {/* Outer Flower: Bottom Left */}
+        <g transform="translate(34, 74)">
+          <ellipse cx="0" cy="-7" rx="6" ry="8" fill="url(#petalSoftLav)" opacity="0.85" />
+          <ellipse cx="-2" cy="7" rx="6" ry="8" fill="url(#petalSoftLav)" opacity="0.85" />
+          <circle cx="0" cy="0" r="6" fill="url(#petalDeepLav)" />
+          <circle cx="0" cy="0" r="1.5" fill="#E5C97F" />
+        </g>
+
+        {/* Main Central Blossom */}
+        <g transform="translate(48, 48)">
+          <ellipse cx="-11" cy="-2" rx="10" ry="7" transform="rotate(-20 -11 -2)" fill="url(#petalSoftLav)" opacity="0.9" />
+          <ellipse cx="10" cy="-4" rx="10" ry="7" transform="rotate(25 10 -4)" fill="url(#petalSoftLav)" opacity="0.9" />
+          <ellipse cx="-3" cy="11" rx="10" ry="7" transform="rotate(-10 -3 11)" fill="url(#petalDeepLav)" opacity="0.92" />
+          <ellipse cx="8" cy="8" rx="9" ry="6" transform="rotate(20 8 8)" fill="url(#petalDeepLav)" opacity="0.92" />
+          <circle cx="0" cy="0" r="7.5" fill="url(#petalDeepLav)" />
+          <circle cx="0" cy="0" r="4" fill="#3D1558" />
+          <circle cx="0" cy="0" r="1.8" fill="#E5C97F" />
+        </g>
       </svg>
     </div>
   );
 }
 
 /**
- * Traditional Auspicious Lotus Filigree
+ * Antique Gold Corner Bracket Flourish (SVG)
  */
-function LotusFiligree({ className = '' }) {
+function GoldCornerBracket({ className = '' }) {
   return (
-    <div className={`flex items-center justify-center gap-2.5 ${className}`} aria-hidden="true">
-      <div className="h-px w-8 sm:w-12 bg-gradient-to-r from-transparent via-[#C5A059] to-[#C5A059]" />
-      <svg viewBox="0 0 28 20" className="w-5 h-4 sm:w-6 sm:h-4.5 text-[#865DA6] flex-shrink-0" fill="currentColor">
-        <path d="M14 1 C12 6 8 9 4 12 C9 12 12 11 14 14 C16 11 19 12 24 12 C20 9 16 6 14 1 Z" />
-        <path d="M14 14.5 C10 13.5 6 14.5 2 16.5 C6 17.5 10 17.5 14 17.5 C18 17.5 22 17.5 26 16.5 C22 14.5 18 13.5 14 14.5 Z" opacity="0.8" />
-        <circle cx="14" cy="7.5" r="1.2" fill="#E5C97F" />
-      </svg>
-      <div className="h-px w-8 sm:w-12 bg-gradient-to-l from-transparent via-[#C5A059] to-[#C5A059]" />
+    <svg viewBox="0 0 24 24" fill="none" className={`w-4 h-4 text-[#C5A059] opacity-75 ${className}`} aria-hidden="true">
+      <path d="M2 14 V4 C2 2.9 2.9 2 4 2 H14" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+      <circle cx="4" cy="4" r="1.2" fill="currentColor" />
+    </svg>
+  );
+}
+
+/**
+ * Royal Lotus & Antique Gold Crest Filigree
+ */
+function RoyalLotusCrest({ className = '' }) {
+  return (
+    <div className={`flex items-center justify-center gap-2.5 sm:gap-3 ${className}`} aria-hidden="true">
+      <div className="h-px w-10 sm:w-16 bg-gradient-to-r from-transparent via-[#C5A059]/70 to-[#C5A059]" />
+      <div className="flex items-center gap-1.5 text-[#C5A059]">
+        <span className="text-[9px] text-[#A278CC]">✦</span>
+        <svg viewBox="0 0 30 22" className="w-6 h-4.5 sm:w-7 sm:h-5 text-[#865DA6] filter drop-shadow-xs" fill="currentColor">
+          <path d="M15 1 C13 7 9 10 4 13 C9 13 13 12 15 15 C17 12 21 13 26 13 C21 10 17 7 15 1 Z" />
+          <path d="M15 16 C11 15 6 16 2 18 C7 19 11 19 15 19 C19 19 23 19 28 18 C24 16 19 15 15 16 Z" opacity="0.8" />
+          <circle cx="15" cy="8" r="1.5" fill="#E5C97F" />
+        </svg>
+        <span className="text-[9px] text-[#A278CC]">✦</span>
+      </div>
+      <div className="h-px w-10 sm:w-16 bg-gradient-to-l from-transparent via-[#C5A059]/70 to-[#C5A059]" />
     </div>
   );
 }
 
 /**
  * Elegant Royal Lavender Wedding Invitation Card Intro Screen
- * Features a gradual, serene entrance and smooth, graceful 3D card opening.
  */
 export default function WeddingIntro({ onOpenStart, onOpenComplete }) {
   const containerRef = useRef(null);
@@ -162,7 +227,7 @@ export default function WeddingIntro({ onOpenStart, onOpenComplete }) {
       }
     }
 
-    // 2. Smooth and Graceful Card Opening Animation (Relaxed & Natural Timing)
+    // 2. Smooth and Graceful Card Opening Animation
     const tl = gsap.timeline({
       onComplete: () => {
         setIsFinished(true);
@@ -203,8 +268,8 @@ export default function WeddingIntro({ onOpenStart, onOpenComplete }) {
       tl.to(
         lightGlowRef.current,
         {
-          opacity: 0.9,
-          scale: 1.9,
+          opacity: 0.95,
+          scale: 2.0,
           duration: 1.1,
           ease: 'power2.out',
         },
@@ -263,51 +328,51 @@ export default function WeddingIntro({ onOpenStart, onOpenComplete }) {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-50 overflow-hidden select-none bg-gradient-to-br from-[#FAF7FD] via-[#F3EBF9] to-[#EFE2F7] flex items-center justify-center p-3 sm:p-6"
+      className="fixed inset-0 z-50 overflow-hidden select-none bg-gradient-to-br from-[#FAF7FD] via-[#F4ECFA] to-[#EFE2F7] flex items-center justify-center p-3.5 sm:p-6"
       style={{ touchAction: 'manipulation' }}
     >
       {/* ── AMBIENT RADIAL GLOW & LIGHT SHAFT ── */}
       <div
         ref={lightGlowRef}
-        className="absolute inset-0 pointer-events-none opacity-0 bg-[radial-gradient(circle_at_center,rgba(255,250,240,0.95)_0%,rgba(235,218,252,0.7)_35%,rgba(197,160,89,0.25)_60%,transparent_80%)] origin-center z-20"
+        className="absolute inset-0 pointer-events-none opacity-0 bg-[radial-gradient(circle_at_center,rgba(255,250,240,0.96)_0%,rgba(238,220,255,0.75)_35%,rgba(197,160,89,0.28)_60%,transparent_82%)] origin-center z-20"
       />
 
       {/* Floating flower petals */}
       <FloatingPetals active={!isFinished} />
 
-      {/* ── 3D CARD CONTAINER WITH GRADUAL FADE-IN & GENTLE SCALE-UP ── */}
+      {/* ── 3D CARD CONTAINER WITH GRADUAL FADE-IN & GENTLE ZOOM ANIMATION ── */}
       <motion.div
         ref={cardContainerRef}
-        initial={{ opacity: 0, y: 26, scale: 0.94 }}
+        initial={{ opacity: 0, y: 28, scale: 0.92 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{
-          duration: 1.35,
-          ease: [0.22, 1, 0.36, 1], // Smooth, gradual natural entrance
+          duration: 1.5,
+          ease: [0.16, 1, 0.3, 1], // Slow, luxurious, gradual zoom-in
         }}
-        className="relative z-20 w-full max-w-[400px] sm:max-w-[440px] max-h-[94vh] flex items-center justify-center"
+        className="relative z-20 w-full max-w-[400px] sm:max-w-[450px] max-h-[94vh] flex items-center justify-center"
         style={{ perspective: '1400px' }}
       >
-        {/* Outer Radiant Soft Glow */}
-        <div className="absolute -inset-4 sm:-inset-6 rounded-3xl bg-gradient-to-tr from-[#9B72C3]/20 via-[#E5C97F]/18 to-[#FAF6FD]/30 blur-xl pointer-events-none" />
+        {/* Multi-layered Soft Glow & Deep Ambient Shadow */}
+        <div className="absolute -inset-4 sm:-inset-6 rounded-[32px] bg-gradient-to-tr from-[#8E5BA8]/20 via-[#E5C97F]/18 to-[#FAF6FD]/30 blur-2xl pointer-events-none" />
 
         {/* ────── 1. INSIDE RIGHT PAGE (Revealed as card opens) ────── */}
         <div
           ref={insidePageRef}
-          className="absolute inset-0 rounded-3xl bg-[#FAF6FD] border border-[#DFC9F3] shadow-lg p-6 sm:p-8 flex flex-col items-center justify-center text-center opacity-0 overflow-hidden pointer-events-none z-10"
+          className="absolute inset-0 rounded-[28px] sm:rounded-3xl bg-[#FAF6FD] border border-[#DFC9F3] shadow-lg p-6 sm:p-8 flex flex-col items-center justify-center text-center opacity-0 overflow-hidden pointer-events-none z-10"
         >
           {/* Subtle inside background glow */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(240,225,255,0.7)_0%,transparent_75%)] pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(240,225,255,0.75)_0%,transparent_75%)] pointer-events-none" />
 
           {/* Golden inner border */}
-          <div className="absolute inset-2 sm:inset-3 rounded-2xl border border-[#C5A059]/30 pointer-events-none" />
+          <div className="absolute inset-2.5 sm:inset-3.5 rounded-2xl border border-[#C5A059]/35 pointer-events-none" />
 
           <p className="font-sans-clean text-[10px] sm:text-xs font-semibold tracking-[0.28em] text-[#785493] uppercase mb-1">
             CELEBRATING LOVE &amp; TOGETHERNESS
           </p>
 
-          <LotusFiligree className="my-2" />
+          <RoyalLotusCrest className="my-2" />
 
-          <h2 className="font-serif-royal text-2xl sm:text-3xl font-bold text-[#2E1546] my-1">
+          <h2 className="font-serif-royal text-2xl sm:text-3.5xl font-bold text-[#2A1242] my-1">
             {couple.groom} &amp; {couple.bride}
           </h2>
 
@@ -319,7 +384,7 @@ export default function WeddingIntro({ onOpenStart, onOpenComplete }) {
             &ldquo;Two Hearts &bull; One Journey &bull; Forever&rdquo;
           </p>
 
-          <div className="mt-3 px-4 py-1.5 rounded-full bg-[#F3EBF9] border border-[#E0CEF3]">
+          <div className="mt-3.5 px-4 py-1.5 rounded-full bg-[#F3EBF9] border border-[#E0CEF3]">
             <p className="font-serif-royal text-xs font-bold text-[#35154E]">
               Sunday, November 29, 2026 &bull; RV Mahal
             </p>
@@ -331,29 +396,37 @@ export default function WeddingIntro({ onOpenStart, onOpenComplete }) {
           ref={frontCoverRef}
           onClick={handleOpenInvitation}
           onTouchStart={handleOpenInvitation}
-          className="relative w-full rounded-3xl bg-white/95 backdrop-blur-md border-2 border-[#D8C2EE] shadow-[0_20px_55px_-10px_rgba(85,38,124,0.25),0_0_0_1px_rgba(255,255,255,0.8)_inset] px-5 sm:px-8 py-6 sm:py-9 flex flex-col items-center justify-center text-center cursor-pointer transition-shadow hover:shadow-[0_25px_65px_-8px_rgba(85,38,124,0.32)] overflow-hidden z-20"
+          className="relative w-full rounded-[28px] sm:rounded-3xl bg-gradient-to-b from-[#FFFDFE] via-[#FAF6FE] to-[#F6EDFC] backdrop-blur-md border-2 border-[#D8C1EE] shadow-[0_24px_65px_-12px_rgba(75,30,115,0.24),0_8px_24px_-4px_rgba(197,160,89,0.18),0_0_0_1px_rgba(255,255,255,0.9)_inset] px-5 sm:px-8 py-6 sm:py-9 flex flex-col items-center justify-center text-center cursor-pointer transition-shadow hover:shadow-[0_28px_75px_-10px_rgba(75,30,115,0.32)] overflow-hidden z-20"
           style={{
             transformStyle: 'preserve-3d',
             backfaceVisibility: 'hidden',
           }}
         >
-          {/* Corner Botanical Floral Ornaments */}
+          {/* Botanical Watercolor Lavender Corner Floral Sprays */}
           <CardCornerFloral className="top-1 left-1 origin-top-left" />
           <CardCornerFloral className="top-1 right-1 origin-top-right -scale-x-100" />
           <CardCornerFloral className="bottom-1 left-1 origin-bottom-left -scale-y-100" />
           <CardCornerFloral className="bottom-1 right-1 origin-bottom-right -scale-x-100 -scale-y-100" />
 
-          {/* Inner Antique Gold Hairline Border */}
-          <div className="absolute inset-2 sm:inset-3 rounded-2xl border border-[#C5A059]/35 pointer-events-none" />
+          {/* Inner Antique Gold Ornamental Hairline Border with Decorative Brackets */}
+          <div className="absolute inset-2.5 sm:inset-3.5 rounded-2xl border border-[#C5A059]/40 pointer-events-none">
+            <GoldCornerBracket className="absolute top-1 left-1" />
+            <GoldCornerBracket className="absolute top-1 right-1 -scale-x-100" />
+            <GoldCornerBracket className="absolute bottom-1 left-1 -scale-y-100" />
+            <GoldCornerBracket className="absolute bottom-1 right-1 -scale-x-100 -scale-y-100" />
+          </div>
 
-          {/* Left Spine Fold Line Effect */}
-          <div className="absolute top-0 bottom-0 left-0 w-2.5 bg-gradient-to-r from-[#D5BFE9]/40 via-white/30 to-transparent pointer-events-none" />
+          {/* Subtle Secondary Inner Hairline */}
+          <div className="absolute inset-4 sm:inset-5 rounded-xl border border-[#EADBFA]/70 pointer-events-none" />
 
-          {/* 1. Auspicious Filigree Emblem */}
-          <LotusFiligree className="mb-2 sm:mb-2.5" />
+          {/* Left Spine Shadow Effect for 3D Book/Card Realism */}
+          <div className="absolute top-0 bottom-0 left-0 w-3 bg-gradient-to-r from-[#D5BEE8]/40 via-white/30 to-transparent pointer-events-none" />
 
-          {/* 2. Top Header */}
-          <p className="font-sans-clean text-[9px] sm:text-[10px] font-semibold tracking-[0.28em] text-[#714E8B] uppercase mb-0.5 select-none">
+          {/* 1. Auspicious Royal Lotus Emblem */}
+          <RoyalLotusCrest className="mb-2 sm:mb-2.5" />
+
+          {/* 2. Top Header Subtitles */}
+          <p className="font-sans-clean text-[9px] sm:text-[10px] font-bold tracking-[0.3em] text-[#6E4E85] uppercase mb-0.5 select-none">
             TOGETHER WITH OUR FAMILIES
           </p>
 
@@ -361,35 +434,35 @@ export default function WeddingIntro({ onOpenStart, onOpenComplete }) {
             cordially invite you to celebrate the wedding of
           </p>
 
-          {/* 3. Bride & Groom Names in Royal Typography */}
-          <div className="w-full py-1.5 my-0.5 border-y border-[#EADBFA]/80 flex flex-col items-center">
-            <h1 className="font-serif-royal text-2xl sm:text-3.5xl font-bold text-[#2E1546] tracking-wide leading-tight drop-shadow-xs">
+          {/* 3. Bride & Groom Names in Majestic Royal Typography */}
+          <div className="w-full py-1.5 sm:py-2 my-0.5 border-y border-[#EADBFA]/85 flex flex-col items-center">
+            <h1 className="font-serif-royal text-2xl sm:text-4xl font-bold text-[#2A1242] tracking-wider leading-tight drop-shadow-xs">
               {couple.groom}
             </h1>
-            <div className="font-script text-3xl sm:text-4xl text-[#C5A059] my-0 leading-none select-none">
+            <div className="font-script text-3xl sm:text-5xl text-[#C5A059] my-0 leading-none select-none filter drop-shadow-xs">
               &amp;
             </div>
-            <h1 className="font-serif-royal text-2xl sm:text-3.5xl font-bold text-[#2E1546] tracking-wide leading-tight drop-shadow-xs">
+            <h1 className="font-serif-royal text-2xl sm:text-4xl font-bold text-[#2A1242] tracking-wider leading-tight drop-shadow-xs">
               {couple.bride}
             </h1>
           </div>
 
           {/* 4. Wedding Date: November 29, 2026 */}
           <div className="my-3 sm:my-3.5 flex items-center justify-center gap-2 w-full">
-            <div className="h-px flex-1 max-w-[32px] sm:max-w-[44px] bg-gradient-to-r from-transparent to-[#C5A059]/60" />
-            <div className="px-3.5 sm:px-4 py-1 sm:py-1.5 rounded-full bg-[#F6EEFC] border border-[#DFC9F3] text-center shadow-2xs">
+            <div className="h-px flex-1 max-w-[32px] sm:max-w-[48px] bg-gradient-to-r from-transparent to-[#C5A059]/70" />
+            <div className="px-4 sm:px-5 py-1 sm:py-1.5 rounded-full bg-[#F6EEFC] border border-[#DFC8F3] text-center shadow-2xs">
               <p className="font-serif-royal text-xs sm:text-sm font-bold text-[#35154E] tracking-wider">
                 {marriage?.dateFormatted || "November 29, 2026"}
               </p>
             </div>
-            <div className="h-px flex-1 max-w-[32px] sm:max-w-[44px] bg-gradient-to-l from-transparent to-[#C5A059]/60" />
+            <div className="h-px flex-1 max-w-[32px] sm:max-w-[48px] bg-gradient-to-l from-transparent to-[#C5A059]/70" />
           </div>
 
           <p className="font-serif-elegant italic text-[11px] sm:text-xs text-[#73518D] -mt-1 mb-4 sm:mb-5">
             {marriage?.venueName || "RV Mahal"}, {marriage?.location || "Manaparai"} &bull; {marriage?.timing || "9:00 AM – 10:30 AM"}
           </p>
 
-          {/* 5. "Touch to Open Invitation" Button (Gradually Appears After the Card) */}
+          {/* 5. "Touch to Open Invitation" Glowing Royal Button */}
           <motion.div
             initial={{ opacity: 0, y: 12, scale: 0.95 }}
             animate={{
@@ -397,9 +470,9 @@ export default function WeddingIntro({ onOpenStart, onOpenComplete }) {
               y: 0,
               scale: [1, 1.025, 1],
               boxShadow: [
-                '0 0 16px rgba(197, 160, 89, 0.4), 0 4px 14px rgba(111, 68, 140, 0.25)',
-                '0 0 28px rgba(197, 160, 89, 0.8), 0 6px 20px rgba(111, 68, 140, 0.4)',
-                '0 0 16px rgba(197, 160, 89, 0.4), 0 4px 14px rgba(111, 68, 140, 0.25)',
+                '0 0 18px rgba(197, 160, 89, 0.45), 0 4px 16px rgba(105, 62, 134, 0.28)',
+                '0 0 30px rgba(197, 160, 89, 0.85), 0 6px 22px rgba(105, 62, 134, 0.45)',
+                '0 0 18px rgba(197, 160, 89, 0.45), 0 4px 16px rgba(105, 62, 134, 0.28)',
               ],
             }}
             transition={{
@@ -408,7 +481,7 @@ export default function WeddingIntro({ onOpenStart, onOpenComplete }) {
               scale: { delay: 1.9, duration: 2.4, repeat: Infinity, ease: 'easeInOut' },
               boxShadow: { delay: 1.9, duration: 2.4, repeat: Infinity, ease: 'easeInOut' },
             }}
-            className="inline-flex items-center gap-2 sm:gap-2.5 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full bg-gradient-to-r from-[#6F448C] via-[#895CA6] to-[#6F448C] border-2 border-[#E5C97F] text-[#FFFDF9] shadow-lg cursor-pointer transition-transform hover:scale-105 active:scale-95"
+            className="inline-flex items-center gap-2 sm:gap-2.5 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full bg-gradient-to-r from-[#693E86] via-[#8555A2] to-[#693E86] border-2 border-[#E5C97F] text-[#FFFDF9] shadow-lg cursor-pointer transition-transform hover:scale-105 active:scale-95"
           >
             <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#F3E1B6] animate-spin" style={{ animationDuration: '7s' }} />
             <span className="font-serif-royal text-xs sm:text-sm font-bold tracking-[0.16em] sm:tracking-[0.18em] uppercase text-[#FFFDF9]">
