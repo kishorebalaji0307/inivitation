@@ -173,10 +173,10 @@ export default function WeddingHero() {
         transition={{ duration: 0.85, delay: 0.15 }}
         className="relative z-10 w-full max-w-xl sm:max-w-2xl md:max-w-3xl mx-auto mt-6 sm:mt-10 px-2 sm:px-6"
       >
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-2 items-center py-4 sm:py-6 bg-white/70 backdrop-blur-sm rounded-2xl border border-[#EADBFA]/70 shadow-xs">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-2 items-center py-4 sm:py-6 bg-white/70 backdrop-blur-sm rounded-2xl border border-[#EADBFA]/70 shadow-xs">
 
           {/* Column 1: DATE */}
-          <div className="flex flex-col items-center text-center px-2 md:border-r border-[#E8DCF4]">
+          <div className="flex flex-col items-center text-center px-2 sm:border-r border-[#E8DCF4]">
             <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#F3EBFB] border border-[#E2D1F4] flex items-center justify-center text-[#734A8E] mb-2 shadow-xs">
               <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-[#734A8E]" />
             </div>
@@ -189,7 +189,7 @@ export default function WeddingHero() {
           </div>
 
           {/* Column 2: TIME */}
-          <div className="flex flex-col items-center text-center px-2 md:border-r border-[#E8DCF4]">
+          <div className="flex flex-col items-center text-center px-2 sm:border-r border-[#E8DCF4]">
             <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#F3EBFB] border border-[#E2D1F4] flex items-center justify-center text-[#734A8E] mb-2 shadow-xs">
               <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-[#734A8E]" />
             </div>
@@ -202,7 +202,7 @@ export default function WeddingHero() {
           </div>
 
           {/* Column 3: VENUE */}
-          <div className="flex flex-col items-center text-center px-2 md:border-r border-[#E8DCF4]">
+          <div className="flex flex-col items-center text-center px-2">
             <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#F3EBFB] border border-[#E2D1F4] flex items-center justify-center text-[#734A8E] mb-2 shadow-xs">
               <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-[#734A8E]" />
             </div>
@@ -211,19 +211,6 @@ export default function WeddingHero() {
             </p>
             <p className="font-serif-elegant italic text-xs sm:text-sm text-[#4E2D6D] font-medium leading-snug">
               RV Mahal &amp; GKS Hall
-            </p>
-          </div>
-
-          {/* Column 4: DRESS CODE */}
-          <div className="flex flex-col items-center text-center px-2">
-            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#F3EBFB] border border-[#E2D1F4] flex items-center justify-center text-[#734A8E] mb-2 shadow-xs">
-              <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-[#734A8E]" />
-            </div>
-            <p className="font-sans-clean text-[9px] sm:text-[10px] font-bold tracking-[0.22em] text-[#674482] uppercase mb-1">
-              DRESS CODE
-            </p>
-            <p className="font-serif-elegant italic text-xs sm:text-sm text-[#4E2D6D] font-medium leading-snug">
-              Traditional / Elegant
             </p>
           </div>
 
