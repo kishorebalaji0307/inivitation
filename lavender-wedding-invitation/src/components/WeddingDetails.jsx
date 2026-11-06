@@ -282,7 +282,7 @@ export default function WeddingDetails() {
           <div className="relative mx-auto inline-block p-2.5 sm:p-3 rounded-[36px] bg-gradient-to-b from-[#EFE5F7] via-white to-[#F4ECFA] border border-[#E3D3F4] shadow-md">
             <div className="overflow-hidden rounded-[30px] w-64 sm:w-80 h-72 sm:h-96 mx-auto bg-[#FAF6FD]">
               <img
-                src={couple.image || "/images/wedding-couple.jpg"}
+                src={couple.image || "/images/wedding-couple-original-purple.jpg"}
                 alt={couple.altText}
                 className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
               />

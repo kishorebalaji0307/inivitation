@@ -10,7 +10,7 @@ export const weddingData = {
   couple: {
     groom: "S. Sasidharan",
     bride: "S. Swetha",
-    image: "/images/wedding-couple.jpg",
+    image: "/images/wedding-couple-original-purple.jpg",
     heroBackground: "/images/hero-bg-couple.jpg",
     altText: "S. Sasidharan and S. Swetha - Wedding Couple",
   },
@@ -146,7 +146,7 @@ export const weddingData = {
       id: 1,
       title: "Wedding Portrait",
       caption: "Sasidharan & Swetha in Traditional Silk Attire",
-      src: "/images/wedding-couple.jpg",
+      src: "/images/wedding-couple-original-purple.jpg",
     },
     {
       id: 2,
