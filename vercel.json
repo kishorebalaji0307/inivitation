@@ -18,6 +18,11 @@
         }
       ]
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/((?!assets/|images/|audio/|textures/|favicon|.*\\..*).*)",
+      "destination": "/index.html"
+    }
   ]
 }
-
