@@ -67,12 +67,15 @@ export default function WeddingDetails() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.85 }}
-            className="relative bg-white/95 backdrop-blur-md rounded-3xl border border-[#E5D5F5] shadow-[0_16px_45px_-12px_rgba(110,65,150,0.08)] p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 hover:shadow-lg hover:border-[#D5BFE9]"
+            className="relative bg-gradient-to-b from-[#FFFDFE] via-white to-[#FAF6FE] backdrop-blur-md rounded-3xl border-2 border-[#D8C1EE] shadow-[0_20px_50px_-12px_rgba(105,62,134,0.12),0_0_0_1px_rgba(255,255,255,0.9)_inset] p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:border-[#C5A059]/60 overflow-hidden"
           >
+            {/* Inner Gold Hairline Frame */}
+            <div className="absolute inset-2 sm:inset-3 rounded-2xl border border-[#C5A059]/30 pointer-events-none" />
+
             {/* Top Badge */}
-            <div>
+            <div className="relative z-10">
               <div className="flex items-center justify-between mb-4">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F3EBF9] border border-[#E0CEF3] text-[#694285] font-sans-clean text-[10px] sm:text-xs font-bold uppercase tracking-wider">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-[#F7F0FD] to-[#EFE2F9] border border-[#DEC7F3] text-[#694285] font-sans-clean text-[10px] sm:text-xs font-bold uppercase tracking-wider shadow-2xs">
                   <Heart className="w-3 h-3 text-[#C5A059] fill-[#C5A059]" />
                   Sacred Muhurtham
                 </span>
@@ -93,7 +96,7 @@ export default function WeddingDetails() {
               <div className="space-y-4 pt-1 border-t border-[#F0E6F8]">
                 {/* Date */}
                 <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-[#F4ECFA] border border-[#E3D3F4] flex items-center justify-center text-[#734A8E] flex-shrink-0 mt-0.5">
+                  <div className="w-9 h-9 rounded-xl bg-gradient-to-b from-[#F7F0FD] to-[#EFE2F9] border border-[#DEC7F3] flex items-center justify-center text-[#734A8E] flex-shrink-0 mt-0.5 shadow-2xs">
                     <Calendar className="w-4 h-4 text-[#734A8E]" />
                   </div>
                   <div>
@@ -108,7 +111,7 @@ export default function WeddingDetails() {
 
                 {/* Timing */}
                 <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-[#F4ECFA] border border-[#E3D3F4] flex items-center justify-center text-[#734A8E] flex-shrink-0 mt-0.5">
+                  <div className="w-9 h-9 rounded-xl bg-gradient-to-b from-[#F7F0FD] to-[#EFE2F9] border border-[#DEC7F3] flex items-center justify-center text-[#734A8E] flex-shrink-0 mt-0.5 shadow-2xs">
                     <Clock className="w-4 h-4 text-[#734A8E]" />
                   </div>
                   <div>
@@ -126,7 +129,7 @@ export default function WeddingDetails() {
 
                 {/* Venue */}
                 <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-[#F4ECFA] border border-[#E3D3F4] flex items-center justify-center text-[#734A8E] flex-shrink-0 mt-0.5">
+                  <div className="w-9 h-9 rounded-xl bg-gradient-to-b from-[#F7F0FD] to-[#EFE2F9] border border-[#DEC7F3] flex items-center justify-center text-[#734A8E] flex-shrink-0 mt-0.5 shadow-2xs">
                     <MapPin className="w-4 h-4 text-[#734A8E]" />
                   </div>
                   <div>
@@ -145,7 +148,7 @@ export default function WeddingDetails() {
             </div>
 
             {/* Bottom Action */}
-            <div className="mt-6 pt-4 border-t border-[#F0E6F8] flex items-center justify-between">
+            <div className="mt-6 pt-4 border-t border-[#F0E6F8] flex items-center justify-between relative z-10">
               <a
                 href={marriage?.mapUrl || "https://maps.google.com/?q=RV+Mahal+Manaparai"}
                 target="_blank"
@@ -158,7 +161,7 @@ export default function WeddingDetails() {
               <button
                 type="button"
                 onClick={scrollToVenues}
-                className="px-3 py-1.5 rounded-full bg-[#F4ECFA] hover:bg-[#EDE0F7] text-[11px] font-sans-clean font-semibold text-[#5A3375] transition-colors cursor-pointer"
+                className="px-3.5 py-1.5 rounded-full bg-[#F4ECFA] hover:bg-[#EDE0F7] border border-[#DFC9F3] text-[11px] font-sans-clean font-semibold text-[#5A3375] transition-colors cursor-pointer"
               >
                 View Map &darr;
               </button>
@@ -171,12 +174,15 @@ export default function WeddingDetails() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.85, delay: 0.1 }}
-            className="relative bg-white/95 backdrop-blur-md rounded-3xl border border-[#E5D5F5] shadow-[0_16px_45px_-12px_rgba(110,65,150,0.08)] p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 hover:shadow-lg hover:border-[#D5BFE9]"
+            className="relative bg-gradient-to-b from-[#FFFDFE] via-white to-[#FAF6FE] backdrop-blur-md rounded-3xl border-2 border-[#D8C1EE] shadow-[0_20px_50px_-12px_rgba(105,62,134,0.12),0_0_0_1px_rgba(255,255,255,0.9)_inset] p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:border-[#C5A059]/60 overflow-hidden"
           >
+            {/* Inner Gold Hairline Frame */}
+            <div className="absolute inset-2 sm:inset-3 rounded-2xl border border-[#C5A059]/30 pointer-events-none" />
+
             {/* Top Badge */}
-            <div>
+            <div className="relative z-10">
               <div className="flex items-center justify-between mb-4">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F3EBF9] border border-[#E0CEF3] text-[#694285] font-sans-clean text-[10px] sm:text-xs font-bold uppercase tracking-wider">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-[#F7F0FD] to-[#EFE2F9] border border-[#DEC7F3] text-[#694285] font-sans-clean text-[10px] sm:text-xs font-bold uppercase tracking-wider shadow-2xs">
                   <Sparkles className="w-3 h-3 text-[#C5A059]" />
                   Evening Reception
                 </span>
@@ -197,7 +203,7 @@ export default function WeddingDetails() {
               <div className="space-y-4 pt-1 border-t border-[#F0E6F8]">
                 {/* Date */}
                 <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-[#F4ECFA] border border-[#E3D3F4] flex items-center justify-center text-[#734A8E] flex-shrink-0 mt-0.5">
+                  <div className="w-9 h-9 rounded-xl bg-gradient-to-b from-[#F7F0FD] to-[#EFE2F9] border border-[#DEC7F3] flex items-center justify-center text-[#734A8E] flex-shrink-0 mt-0.5 shadow-2xs">
                     <Calendar className="w-4 h-4 text-[#734A8E]" />
                   </div>
                   <div>
@@ -212,7 +218,7 @@ export default function WeddingDetails() {
 
                 {/* Timing */}
                 <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-[#F4ECFA] border border-[#E3D3F4] flex items-center justify-center text-[#734A8E] flex-shrink-0 mt-0.5">
+                  <div className="w-9 h-9 rounded-xl bg-gradient-to-b from-[#F7F0FD] to-[#EFE2F9] border border-[#DEC7F3] flex items-center justify-center text-[#734A8E] flex-shrink-0 mt-0.5 shadow-2xs">
                     <Clock className="w-4 h-4 text-[#734A8E]" />
                   </div>
                   <div>
@@ -230,7 +236,7 @@ export default function WeddingDetails() {
 
                 {/* Venue */}
                 <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-[#F4ECFA] border border-[#E3D3F4] flex items-center justify-center text-[#734A8E] flex-shrink-0 mt-0.5">
+                  <div className="w-9 h-9 rounded-xl bg-gradient-to-b from-[#F7F0FD] to-[#EFE2F9] border border-[#DEC7F3] flex items-center justify-center text-[#734A8E] flex-shrink-0 mt-0.5 shadow-2xs">
                     <MapPin className="w-4 h-4 text-[#734A8E]" />
                   </div>
                   <div>
@@ -249,7 +255,7 @@ export default function WeddingDetails() {
             </div>
 
             {/* Bottom Action */}
-            <div className="mt-6 pt-4 border-t border-[#F0E6F8] flex items-center justify-between">
+            <div className="mt-6 pt-4 border-t border-[#F0E6F8] flex items-center justify-between relative z-10">
               <a
                 href={reception?.mapUrl || "https://maps.google.com/?q=GKS+Auditorium+Bharathi+Nagar+Ganapathy+Coimbatore"}
                 target="_blank"
@@ -262,7 +268,7 @@ export default function WeddingDetails() {
               <button
                 type="button"
                 onClick={scrollToVenues}
-                className="px-3 py-1.5 rounded-full bg-[#F4ECFA] hover:bg-[#EDE0F7] text-[11px] font-sans-clean font-semibold text-[#5A3375] transition-colors cursor-pointer"
+                className="px-3.5 py-1.5 rounded-full bg-[#F4ECFA] hover:bg-[#EDE0F7] border border-[#DFC9F3] text-[11px] font-sans-clean font-semibold text-[#5A3375] transition-colors cursor-pointer"
               >
                 View Map &darr;
               </button>
@@ -277,21 +283,26 @@ export default function WeddingDetails() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9 }}
-          className="mt-10 sm:mt-14 max-w-xl mx-auto text-center"
+          className="mt-12 sm:mt-16 max-w-xl mx-auto text-center"
         >
-          <div className="relative mx-auto inline-block p-2.5 sm:p-3 rounded-[36px] bg-gradient-to-b from-[#EFE5F7] via-white to-[#F4ECFA] border border-[#E3D3F4] shadow-md">
-            <div className="overflow-hidden rounded-[30px] w-64 sm:w-80 h-72 sm:h-96 mx-auto bg-[#FAF6FD]">
+          <div className="relative mx-auto inline-block p-3 sm:p-4 rounded-[42px] bg-gradient-to-b from-[#FFFDFE] via-[#FAF4FE] to-[#F2E5FA] border-2 border-[#D8C1EE] shadow-[0_22px_60px_-12px_rgba(105,62,134,0.18)]">
+            {/* Subtle inner gold rim */}
+            <div className="absolute inset-1.5 sm:inset-2 rounded-[36px] border border-[#C5A059]/35 pointer-events-none" />
+
+            <div className="overflow-hidden rounded-[30px] w-64 sm:w-80 h-72 sm:h-96 mx-auto bg-[#FAF6FD] relative shadow-inner">
               <img
                 src={couple.image || "/images/wedding-couple-original-purple.jpg"}
                 alt={couple.altText}
                 className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#2A1242]/15 via-transparent to-transparent pointer-events-none" />
             </div>
           </div>
-          <p className="font-script text-3xl sm:text-4xl text-[#4A2D69] mt-3">
-            S. Sasidharan &amp; S. Swetha
+
+          <p className="font-script text-3xl sm:text-5xl text-[#3A1856] mt-3.5 filter drop-shadow-xs">
+            S. Sasidharan <span className="text-[#C5A059]">&amp;</span> S. Swetha
           </p>
-          <p className="font-serif-elegant italic text-xs sm:text-sm text-[#775A91] mt-0.5">
+          <p className="font-serif-elegant italic text-xs sm:text-sm text-[#73528E] mt-0.5">
             Beginning their lifelong voyage of harmony and happiness
           </p>
         </motion.div>

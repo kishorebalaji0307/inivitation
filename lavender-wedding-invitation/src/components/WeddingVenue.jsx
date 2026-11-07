@@ -77,14 +77,14 @@ export default function WeddingVenue() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="bg-white/95 backdrop-blur-md rounded-3xl border border-[#E5D5F5] shadow-[0_16px_50px_-12px_rgba(110,65,150,0.08)] overflow-hidden"
+          className="bg-gradient-to-b from-[#FFFDFE] via-white to-[#FAF6FE] backdrop-blur-md rounded-3xl border-2 border-[#D8C1EE] shadow-[0_20px_50px_-12px_rgba(105,62,134,0.12),0_0_0_1px_rgba(255,255,255,0.9)_inset] overflow-hidden"
         >
           <div className="grid grid-cols-1 lg:grid-cols-5 items-stretch">
             
             {/* Left: Venue Information (2 cols) */}
             <div className="lg:col-span-2 p-6 sm:p-8 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-[#F0E6F8]">
               <div>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F3EBF9] border border-[#E0CEF3] text-[#694285] font-sans-clean text-[10px] font-bold uppercase tracking-wider mb-3">
+                <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-gradient-to-r from-[#F7F0FD] to-[#EFE2F9] border border-[#DEC7F3] text-[#694285] font-sans-clean text-[10px] font-bold uppercase tracking-wider mb-3 shadow-2xs">
                   {activeVenue.event} Venue
                 </span>
 
@@ -118,7 +118,7 @@ export default function WeddingVenue() {
                   href={activeVenue.mapUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#6B4286] to-[#4F276E] hover:from-[#5A3375] hover:to-[#421D5E] text-white text-xs font-sans-clean font-semibold tracking-wider uppercase transition-all shadow-xs hover:shadow-md cursor-pointer"
+                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#6B4286] via-[#7F529F] to-[#5A3375] hover:from-[#5E3678] hover:to-[#4A2566] border-2 border-[#C5A059]/70 text-white text-xs font-sans-clean font-bold tracking-wider uppercase transition-all shadow-xs hover:shadow-md cursor-pointer"
                 >
                   <Navigation className="w-3.5 h-3.5 text-[#F2E1B6]" />
                   <span>Get Directions in Google Maps</span>

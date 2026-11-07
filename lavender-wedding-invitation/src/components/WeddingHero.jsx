@@ -64,15 +64,25 @@ export default function WeddingHero() {
       <motion.div
         initial={{ opacity: 0, y: 28 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-        className="relative z-10 w-full max-w-xl sm:max-w-2xl md:max-w-3xl mx-auto bg-white/95 backdrop-blur-md rounded-t-[160px] sm:rounded-t-[240px] md:rounded-t-[280px] border border-[#EADBFA] shadow-[0_22px_60px_-15px_rgba(110,65,150,0.09)] pt-14 sm:pt-20 pb-8 sm:pb-10 px-4 sm:px-10 text-center overflow-hidden"
+        transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+        className="relative z-10 w-full max-w-xl sm:max-w-2xl md:max-w-3xl mx-auto bg-gradient-to-b from-[#FFFDFE] via-white to-[#FAF6FE] backdrop-blur-md rounded-t-[170px] sm:rounded-t-[250px] md:rounded-t-[290px] border-2 border-[#D8C1EE] shadow-[0_26px_70px_-12px_rgba(105,62,134,0.14),0_0_0_1px_rgba(255,255,255,0.95)_inset] pt-14 sm:pt-20 pb-8 sm:pb-10 px-4 sm:px-10 text-center overflow-hidden"
       >
         {/* Soft background ambient glow */}
-        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_top,rgba(240,230,252,0.6)_0%,transparent_75%)]" />
+        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_top,rgba(240,230,252,0.65)_0%,transparent_75%)]" />
+
+        {/* Inner Antique Gold Hairline Arch Border */}
+        <div className="absolute inset-2.5 sm:inset-3.5 rounded-t-[155px] sm:rounded-t-[235px] md:rounded-t-[275px] border border-[#C5A059]/35 pointer-events-none" />
 
         <div className="relative z-10 flex flex-col items-center">
+          {/* Subtle gold star flourish */}
+          <div className="flex items-center justify-center gap-2 mb-1.5 text-[#C5A059] opacity-80" aria-hidden="true">
+            <span className="text-[9px] text-[#A278CC]">✦</span>
+            <div className="w-8 sm:w-12 h-px bg-gradient-to-r from-transparent via-[#C5A059] to-transparent" />
+            <span className="text-[9px] text-[#A278CC]">✦</span>
+          </div>
+
           {/* 1. Header: Together With Our Families */}
-          <p className="font-sans-clean text-[10px] sm:text-xs font-semibold tracking-[0.28em] text-[#6F4E88] uppercase mb-1 select-none">
+          <p className="font-sans-clean text-[10px] sm:text-xs font-bold tracking-[0.3em] text-[#6E4E85] uppercase mb-1 select-none">
             TOGETHER WITH OUR FAMILIES
           </p>
 
@@ -82,36 +92,38 @@ export default function WeddingHero() {
           </p>
 
           {/* 3. Majestic Heading: WEDDING */}
-          <h1 className="font-serif-royal text-3xl sm:text-5xl md:text-6xl font-bold text-[#2A1545] tracking-[0.26em] md:tracking-[0.34em] uppercase leading-none mt-1 select-none">
+          <h1 className="font-serif-royal text-3xl sm:text-5xl md:text-6xl font-bold text-[#2A1545] tracking-[0.26em] md:tracking-[0.34em] uppercase leading-none mt-1 select-none drop-shadow-xs">
             WEDDING
           </h1>
 
           {/* 4. Cursive Script Calligraphy: Celebration */}
-          <p className="font-script text-5xl sm:text-7xl md:text-8xl text-[#4E316E] -mt-1 sm:-mt-3 mb-2 sm:mb-3 select-none leading-tight">
+          <p className="font-script text-5xl sm:text-7xl md:text-8xl text-[#4E316E] -mt-1 sm:-mt-3 mb-2 sm:mb-3 select-none leading-tight filter drop-shadow-xs">
             Celebration
           </p>
 
           {/* 5. Delicate Lotus Filigree */}
           <LotusDivider className="my-2 sm:my-3" />
 
-          {/* 6. Couple Names */}
-          <h2 className="font-serif-royal text-xl sm:text-3xl md:text-4xl font-semibold text-[#2F194E] tracking-wide mt-1 mb-1">
-            {couple.groom} &amp; {couple.bride}
+          {/* 6. Couple Names in Majestic Typography */}
+          <h2 className="font-serif-royal text-xl sm:text-3xl md:text-4xl font-bold text-[#2F194E] tracking-wide mt-1 mb-1">
+            {couple.groom} <span className="font-script font-normal text-3xl sm:text-5xl text-[#C5A059] mx-1 leading-none select-none filter drop-shadow-xs">&amp;</span> {couple.bride}
           </h2>
 
           {/* 7. Tagline: TWO HEARTS • ONE JOURNEY • FOREVER */}
-          <p className="font-sans-clean text-[9px] sm:text-[11px] font-semibold tracking-[0.26em] text-[#7A5B96] uppercase mt-1 mb-6 sm:mb-8 select-none">
+          <p className="font-sans-clean text-[9px] sm:text-[11px] font-semibold tracking-[0.28em] text-[#7A5B96] uppercase mt-1 mb-6 sm:mb-8 select-none">
             TWO HEARTS &bull; ONE JOURNEY &bull; FOREVER
           </p>
 
           {/* 8. EMBEDDED COUNTDOWN PILL (Reference layout) */}
-          <div className="w-full max-w-lg mx-auto bg-[#F6EEFC]/90 border border-[#E5D5F5] rounded-2xl sm:rounded-3xl p-4 sm:p-5 shadow-xs">
-            <p className="font-sans-clean text-[9px] sm:text-[11px] font-semibold tracking-[0.24em] text-[#694883] uppercase mb-3">
+          <div className="w-full max-w-lg mx-auto bg-gradient-to-b from-[#F9F3FD] to-[#F3EBF9] border border-[#E3D3F4] rounded-2xl sm:rounded-3xl p-4 sm:p-5 shadow-xs relative overflow-hidden">
+            <div className="absolute inset-1.5 rounded-xl sm:rounded-2xl border border-[#C5A059]/20 pointer-events-none" />
+
+            <p className="font-sans-clean text-[9px] sm:text-[11px] font-bold tracking-[0.26em] text-[#694883] uppercase mb-3">
               THE BIG DAY IS COMING
             </p>
 
             {/* 4 Columns Countdown */}
-            <div className="grid grid-cols-4 items-center">
+            <div className="grid grid-cols-4 items-center relative z-10">
               {/* Days */}
               <div className="flex flex-col items-center border-r border-[#DDC9F2] pr-1">
                 <span className="font-serif-royal text-2xl sm:text-4xl font-bold text-[#2E1848] tracking-tight">
@@ -155,17 +167,17 @@ export default function WeddingHero() {
 
             {/* Filigree Ornament Beneath Countdown */}
             <div className="flex items-center justify-center gap-2 mt-3 text-[#A88EC6] select-none" aria-hidden="true">
-              <span className="text-[9px]">✦</span>
-              <div className="w-8 sm:w-12 h-px bg-[#D6C2EE]" />
+              <span className="text-[9px] text-[#C5A059]">✦</span>
+              <div className="w-8 sm:w-12 h-px bg-gradient-to-r from-transparent via-[#C5A059]/50 to-transparent" />
               <span className="text-[10px] text-[#865DA6]">🪷</span>
-              <div className="w-8 sm:w-12 h-px bg-[#D6C2EE]" />
-              <span className="text-[9px]">✦</span>
+              <div className="w-8 sm:w-12 h-px bg-gradient-to-r from-transparent via-[#C5A059]/50 to-transparent" />
+              <span className="text-[9px] text-[#C5A059]">✦</span>
             </div>
           </div>
         </div>
       </motion.div>
 
-      {/* ── 4-COLUMN QUICK INFO BAR (Reference layout) ── */}
+      {/* ── 3-COLUMN QUICK INFO BAR (Reference layout) ── */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -173,14 +185,15 @@ export default function WeddingHero() {
         transition={{ duration: 0.85, delay: 0.15 }}
         className="relative z-10 w-full max-w-xl sm:max-w-2xl md:max-w-3xl mx-auto mt-6 sm:mt-10 px-2 sm:px-6"
       >
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-2 items-center py-4 sm:py-6 bg-white/70 backdrop-blur-sm rounded-2xl border border-[#EADBFA]/70 shadow-xs">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-2 items-center py-4 sm:py-6 bg-white/85 backdrop-blur-md rounded-2xl border-2 border-[#E5D5F5] shadow-[0_12px_36px_-10px_rgba(105,62,134,0.1)] relative overflow-hidden">
+          <div className="absolute inset-1.5 rounded-xl border border-[#C5A059]/25 pointer-events-none" />
 
           {/* Column 1: DATE */}
-          <div className="flex flex-col items-center text-center px-2 sm:border-r border-[#E8DCF4]">
-            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#F3EBFB] border border-[#E2D1F4] flex items-center justify-center text-[#734A8E] mb-2 shadow-xs">
+          <div className="flex flex-col items-center text-center px-2 sm:border-r border-[#E8DCF4] relative z-10">
+            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gradient-to-b from-[#F7F0FD] to-[#EFE2F9] border border-[#DEC7F3] flex items-center justify-center text-[#734A8E] mb-2 shadow-2xs">
               <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-[#734A8E]" />
             </div>
-            <p className="font-sans-clean text-[9px] sm:text-[10px] font-bold tracking-[0.22em] text-[#674482] uppercase mb-1">
+            <p className="font-sans-clean text-[9px] sm:text-[10px] font-bold tracking-[0.24em] text-[#674482] uppercase mb-1">
               DATE
             </p>
             <p className="font-serif-elegant italic text-xs sm:text-sm text-[#4E2D6D] font-medium leading-snug">
@@ -189,11 +202,11 @@ export default function WeddingHero() {
           </div>
 
           {/* Column 2: TIME */}
-          <div className="flex flex-col items-center text-center px-2 sm:border-r border-[#E8DCF4]">
-            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#F3EBFB] border border-[#E2D1F4] flex items-center justify-center text-[#734A8E] mb-2 shadow-xs">
+          <div className="flex flex-col items-center text-center px-2 sm:border-r border-[#E8DCF4] relative z-10">
+            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gradient-to-b from-[#F7F0FD] to-[#EFE2F9] border border-[#DEC7F3] flex items-center justify-center text-[#734A8E] mb-2 shadow-2xs">
               <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-[#734A8E]" />
             </div>
-            <p className="font-sans-clean text-[9px] sm:text-[10px] font-bold tracking-[0.22em] text-[#674482] uppercase mb-1">
+            <p className="font-sans-clean text-[9px] sm:text-[10px] font-bold tracking-[0.24em] text-[#674482] uppercase mb-1">
               TIME
             </p>
             <p className="font-serif-elegant italic text-xs sm:text-sm text-[#4E2D6D] font-medium leading-snug">
@@ -202,11 +215,11 @@ export default function WeddingHero() {
           </div>
 
           {/* Column 3: VENUE */}
-          <div className="flex flex-col items-center text-center px-2">
-            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#F3EBFB] border border-[#E2D1F4] flex items-center justify-center text-[#734A8E] mb-2 shadow-xs">
+          <div className="flex flex-col items-center text-center px-2 relative z-10">
+            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gradient-to-b from-[#F7F0FD] to-[#EFE2F9] border border-[#DEC7F3] flex items-center justify-center text-[#734A8E] mb-2 shadow-2xs">
               <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-[#734A8E]" />
             </div>
-            <p className="font-sans-clean text-[9px] sm:text-[10px] font-bold tracking-[0.22em] text-[#674482] uppercase mb-1">
+            <p className="font-sans-clean text-[9px] sm:text-[10px] font-bold tracking-[0.24em] text-[#674482] uppercase mb-1">
               VENUE
             </p>
             <p className="font-serif-elegant italic text-xs sm:text-sm text-[#4E2D6D] font-medium leading-snug">

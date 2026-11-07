@@ -80,12 +80,13 @@ export default function WeddingCountdown() {
           {timeUnits.map((item, idx) => (
             <div
               key={idx}
-              className="bg-white/95 rounded-2xl border border-[#E8DCF4] p-3 sm:p-4 shadow-xs"
+              className="bg-gradient-to-b from-[#FFFDFE] to-[#FAF4FE] rounded-2xl border-2 border-[#E3D3F4] p-3.5 sm:p-4 shadow-xs relative overflow-hidden"
             >
-              <p className="font-serif-royal text-2xl sm:text-4xl font-bold text-[#341B4E]">
+              <div className="absolute inset-1 rounded-xl border border-[#C5A059]/25 pointer-events-none" />
+              <p className="font-serif-royal text-2xl sm:text-4xl font-bold text-[#341B4E] relative z-10">
                 {String(item.value).padStart(2, '0')}
               </p>
-              <p className="font-sans-clean text-[9px] sm:text-[11px] font-semibold text-[#7E5E99] uppercase tracking-wider mt-1">
+              <p className="font-sans-clean text-[9px] sm:text-[11px] font-bold text-[#7E5E99] uppercase tracking-wider mt-1 relative z-10">
                 {item.label}
               </p>
             </div>

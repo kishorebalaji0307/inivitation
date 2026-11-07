@@ -37,21 +37,23 @@ export default function WeddingClosing() {
         className="relative z-10 max-w-xl mx-auto flex flex-col items-center"
       >
         {/* Top Lotus Emblem */}
-        <div className="mb-2 text-[#8C62AC]">
-          <svg viewBox="0 0 28 20" className="w-6 h-5 mx-auto" fill="currentColor" aria-hidden="true">
+        <div className="mb-2 text-[#8C62AC] flex items-center justify-center gap-2">
+          <span className="text-[10px] text-[#C5A059]">✦</span>
+          <svg viewBox="0 0 28 20" className="w-6 h-5" fill="currentColor" aria-hidden="true">
             <path d="M14 1 C12 6 8 9 4 12 C9 12 12 11 14 14 C16 11 19 12 24 12 C20 9 16 6 14 1 Z" />
             <path d="M14 14.5 C10 13.5 6 14.5 2 16.5 C6 17.5 10 17.5 14 17.5 C18 17.5 22 17.5 26 16.5 C22 14.5 18 13.5 14 14.5 Z" opacity="0.8" />
             <circle cx="14" cy="7.5" r="1.2" fill="#E5C97F" />
           </svg>
+          <span className="text-[10px] text-[#C5A059]">✦</span>
         </div>
 
         {/* Cursive Script: Kindly grace the occasion */}
-        <h3 className="font-script text-4xl sm:text-5xl text-[#3A1E57] mb-2 leading-tight">
+        <h3 className="font-script text-4xl sm:text-5xl text-[#3A1E57] mb-2 leading-tight filter drop-shadow-xs">
           Kindly grace the occasion
         </h3>
 
         {/* Uppercase line: YOUR PRESENCE WILL MAKE OUR DAY MORE SPECIAL */}
-        <p className="font-sans-clean text-[9px] sm:text-[11px] font-semibold tracking-[0.26em] text-[#785794] uppercase mb-5 max-w-md">
+        <p className="font-sans-clean text-[9px] sm:text-[11px] font-bold tracking-[0.28em] text-[#785794] uppercase mb-5 max-w-md">
           YOUR PRESENCE WILL MAKE OUR DAY MORE SPECIAL
         </p>
 

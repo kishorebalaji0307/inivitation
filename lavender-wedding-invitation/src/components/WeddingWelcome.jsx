@@ -36,12 +36,14 @@ export default function WeddingWelcome() {
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="bg-white/95 backdrop-blur-md rounded-2xl sm:rounded-3xl border border-[#E9DCF7] shadow-[0_16px_50px_-12px_rgba(110,65,150,0.08)] overflow-hidden grid grid-cols-1 md:grid-cols-2 items-stretch"
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          className="bg-gradient-to-b from-[#FFFDFE] via-white to-[#FAF6FE] backdrop-blur-md rounded-3xl border-2 border-[#E3D3F4] shadow-[0_22px_60px_-12px_rgba(105,62,134,0.12),0_0_0_1px_rgba(255,255,255,0.95)_inset] overflow-hidden grid grid-cols-1 md:grid-cols-2 items-stretch relative"
         >
+          <div className="absolute inset-2 sm:inset-3 rounded-2xl border border-[#C5A059]/20 pointer-events-none" />
+
           {/* Left Column: A new chapter begins... */}
-          <div className="p-6 sm:p-10 md:p-12 flex flex-col justify-center items-center md:items-start text-center md:text-left">
-            <h2 className="font-script text-4xl sm:text-5xl text-[#3E215C] leading-snug mb-2 sm:mb-3">
+          <div className="p-6 sm:p-10 md:p-12 flex flex-col justify-center items-center md:items-start text-center md:text-left relative z-10">
+            <h2 className="font-script text-4xl sm:text-5xl text-[#3E215C] leading-snug mb-2 sm:mb-3 filter drop-shadow-xs">
               A new chapter<br className="hidden sm:inline" /> begins...
             </h2>
 
@@ -55,7 +57,7 @@ export default function WeddingWelcome() {
           </div>
 
           {/* Right Column: Rings Photo with Curved Top-Right Border */}
-          <div className="relative min-h-[240px] sm:min-h-[290px] md:min-h-full overflow-hidden bg-[#F7F1FB]">
+          <div className="relative min-h-[240px] sm:min-h-[290px] md:min-h-full overflow-hidden bg-[#F7F1FB] relative z-10">
             <img
               src="/images/couple-rings.png"
               alt="Sasidharan &amp; Swetha - Holding Hands and Wedding Rings"
@@ -77,11 +79,11 @@ export default function WeddingWelcome() {
           <a
             href="#wedding-venues"
             onClick={scrollToVenues}
-            className="inline-flex items-center gap-2 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full border border-[#9A74BE]/70 bg-white/90 hover:bg-[#F3EBF9] text-[#4E2D6D] text-xs sm:text-sm font-sans-clean font-semibold tracking-[0.2em] uppercase transition-all duration-300 shadow-xs hover:shadow-md cursor-pointer hover:scale-105 active:scale-95"
+            className="inline-flex items-center gap-2 px-7 sm:px-9 py-2.5 sm:py-3 rounded-full border-2 border-[#C5A059]/70 bg-gradient-to-r from-white via-[#FAF6FE] to-white hover:bg-[#F3EBF9] text-[#4E2D6D] text-xs sm:text-sm font-sans-clean font-bold tracking-[0.2em] uppercase transition-all duration-300 shadow-xs hover:shadow-md cursor-pointer hover:scale-105 active:scale-95"
           >
-            <MapPin className="w-3.5 h-3.5 text-[#865CA7]" />
+            <MapPin className="w-3.5 h-3.5 text-[#C5A059]" />
             <span>VIEW LOCATION</span>
-            <span className="text-[#865CA7] font-bold ml-0.5">&gt;</span>
+            <span className="text-[#C5A059] font-bold ml-0.5">&gt;</span>
           </a>
         </motion.div>
 
