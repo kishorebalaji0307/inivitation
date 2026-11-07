@@ -58,7 +58,7 @@ export default function WeddingWelcome() {
           <div className="relative min-h-[240px] sm:min-h-[290px] md:min-h-full overflow-hidden bg-[#F7F1FB]">
             <img
               src="/images/couple-rings.png"
-              alt="Wedding Rings with Lavender Blossoms"
+              alt="Sasidharan &amp; Swetha - Holding Hands and Wedding Rings"
               className="w-full h-full object-cover object-center rounded-tr-[50px] sm:rounded-tr-[80px] md:rounded-tr-[100px] transition-transform duration-700 hover:scale-105"
             />
             {/* Soft atmospheric overlay */}
