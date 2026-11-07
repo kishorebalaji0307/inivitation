@@ -37,10 +37,8 @@ export default function WeddingWelcome() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="bg-gradient-to-b from-[#FFFDFE] via-white to-[#FAF6FE] backdrop-blur-md rounded-3xl border-2 border-[#E3D3F4] shadow-[0_22px_60px_-12px_rgba(105,62,134,0.12),0_0_0_1px_rgba(255,255,255,0.95)_inset] overflow-hidden grid grid-cols-1 md:grid-cols-2 items-stretch relative"
+          className="bg-gradient-to-b from-[#FFFDFE] via-white to-[#FAF6FE] backdrop-blur-md rounded-3xl border-2 border-[#E3D3F4] shadow-[0_22px_60px_-12px_rgba(105,62,134,0.12)] overflow-hidden grid grid-cols-1 md:grid-cols-2 items-stretch relative"
         >
-          <div className="absolute inset-2 sm:inset-3 rounded-2xl border border-[#C5A059]/20 pointer-events-none" />
-
           {/* Left Column: A new chapter begins... */}
           <div className="p-6 sm:p-10 md:p-12 flex flex-col justify-center items-center md:items-start text-center md:text-left relative z-10">
             <h2 className="font-script text-4xl sm:text-5xl text-[#3E215C] leading-snug mb-2 sm:mb-3 filter drop-shadow-xs">
@@ -56,15 +54,15 @@ export default function WeddingWelcome() {
             </p>
           </div>
 
-          {/* Right Column: Rings Photo with Curved Top-Right Border */}
-          <div className="relative min-h-[240px] sm:min-h-[290px] md:min-h-full overflow-hidden bg-[#F7F1FB] relative z-10">
+          {/* Right Column: Rings & Hands Photo seamlessly integrated */}
+          <div className="relative min-h-[260px] sm:min-h-[300px] md:min-h-full overflow-hidden bg-[#F7F1FB]">
             <img
               src="/images/couple-rings.png"
               alt="Sasidharan &amp; Swetha - Holding Hands and Wedding Rings"
-              className="w-full h-full object-cover object-center rounded-tr-[50px] sm:rounded-tr-[80px] md:rounded-tr-[100px] transition-transform duration-700 hover:scale-105"
+              className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
             />
             {/* Soft atmospheric overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#FAF6FD]/30 to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#FAF6FD]/20 to-transparent pointer-events-none" />
           </div>
         </motion.div>
 
